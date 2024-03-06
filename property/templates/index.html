@@ -1,0 +1,1907 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'property/css/style.css' %}">
+    <meta name="description" content="{{ meta.description }}"/>
+    <title>{{ meta.title }}</title>
+</head>
+
+<body>
+    <header class="sp-header py-1">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand d-inline-block me-4" href="#">
+                    Logo
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+                    id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink1"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Buy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Rent
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Sell
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                        <ul class="navbar-nav me-lg-2">
+                            <li class="nav-item dropdown">
+                                <select id="CurrencySwitcher" name="CurrencySwitcher" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                    <option value="{{lists.currency_switcher}}" selected disabled>{{ lists.currency_switcher }}</option>
+                                    <option value="US">US</option>
+                                    <option value="AED">AED</option>
+                                    <option value="EUR">EUR</option>
+                                    <option value="JPY">JPY</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="AUD">AUD</option>
+                                    <option value="CAD">CAD</option>
+                                    <option value="CHF">CHF</option>
+                                    <option value="CNY">CNY</option>
+                                    <option value="HKD">HKD</option>
+                                    <option value="NZD">NZD</option>
+                                    <option value="SEK">SEK</option>
+                                    <option value="KRW">KRW</option>
+                                    <option value="SGD">SGD</option>
+                                    <option value="NOK">NOK</option>
+                                    <option value="MXN">MXN</option>
+                                    <option value="INR">INR</option>
+                                    <option value="BRL">BRL</option>
+                                    <option value="RUB">RUB</option>
+                                    <option value="ZAR">ZAR</option>
+                                    <option value="TRY">TRY</option>
+                                    <option value="PLN">PLN</option>
+                                    <option value="CZK">CZK</option>
+                                    <option value="THB">THB</option>
+                                    <option value="IDR">IDR</option>
+                                    <option value="HUF">HUF</option>
+                                    <option value="DKK">DKK</option>
+                                    <option value="ILS">ILS</option>
+                                    <option value="PHP">PHP</option>
+                                    <option value="MYR">MYR</option>
+                                </select>
+                                {% if user.is_anonymous %}
+                                    <input type="text" id="for_currency_switcher_ident" name="for_currency_switcher_ident" value=1>
+                                {% else %}
+                                    <input type="text" id="for_currency_switcher_ident" name="for_currency_switcher_ident" value="0">
+                                {% endif %}
+                                <input type="text" id="for_currency_switcher" name="for_currency_switcher" value="">
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    EN
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink2">
+                                    <li><a class="dropdown-item" href="#">UA</a></li>
+                                    <li><a class="dropdown-item" href="#">RU</a></li>
+                                    <li><a class="dropdown-item" href="#">ES</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="btn-wrapper mb-2 mb-lg-0 me-lg-3">
+                            <a href="#" class="btn btn-sign">Sign In</a>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="#" class="btn btn-add">List your property</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="sp-map mb-4 mb-lg-5 position-relative">
+            <div id="sp-map"></div>
+            <div class="container top">
+                <a class="d-md-none sp-condos__btn sp-collapse d-inline-block collapsed" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                    aria-expanded="false" aria-controls="collapseExample"> {% if war_message != "" %}
+                                <div>
+                                    <ul class="list-unstyled alert alert-danger">
+                                         <li>
+                                             {{ war_message }}
+                                         </li>
+                                    </ul>
+                                </div>
+                            {% endif %}
+                </a>
+
+                <div class="d-none d-md-block" id="collapseExample">
+                    <div class="px-4">
+                        <div class="sp-home__form position-relative">
+                            <form id="search-form">
+                                <div class="row sp-home__form-main px-2">
+                                    <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Project</label>
+                                                    <input type="text" id="projects" class="form-control" placeholder="Project name" value="{{ project_value }}">
+                                                    <ul id="project-suggestions-list" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                    <div class="sp-home__form-col col-lg-2 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Property Type</label>
+                                            <div class="">
+                                                <select id="ptypes" class="form-control select2-hidden-accessible"
+                                                    tabindex="-1" aria-hidden="true">
+                                                    <option value="{{ ptypes_value }}" selected disabled>{% if ptypes_value_name %}{{ ptypes_value_name }}{% else %}Property type{% endif %}</option>
+                                                    <option value="1">House</option>
+                                                    <option value="2">Villa</option>
+                                                    <option value="3">Condo</option>
+                                                    <option value="4">Apartment</option>
+                                                    <option value="5">Townhouse</option>
+                                                    <option value="6">Land</option>
+                                                    <option value="7">Shophouse</option>
+                                                    <option value="">All</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sp-home__form-col col-lg-2 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Bedrooms</label>
+                                            <div class="">
+                                                <select id="bedrooms" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                    <option value="{{ bedrooms_value }}" selected="" disabled="">{% if bedrooms_value %}{{ bedrooms_value }}{% else %}Bedrooms{% endif %}</option>
+                                                    <option value="1">1+</option>
+                                                    <option value="2">2+</option>
+                                                    <option value="3">3+</option>
+                                                    <option value="4">4+</option>
+                                                    <option value="5">5+</option>
+                                                    <option value="6">6+</option>
+                                                    <option value="">All</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                        <div class="form-group">
+                                            <label>Price Range</label>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <div class="">
+                                                        <input type="text" id="price-min" class="form-control" placeholder="Min" value="{{ price_min_value }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <div class="">
+                                                        <input type="text" id="price-max" class="form-control" placeholder="Max" value="{{ price_max_value }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sp-home__form-btn col-lg-1 col-sm-12 d-flex align-items-center justify-content-center">
+                                        <div class="form-button">
+                                            <input type="hidden" id="moreFiltersInput" value="0">
+                                            <a href="#" class="btn search-btn" onclick="moreFilters()" id="moreFiltersLink">More</a>
+                                        </div>
+                                    </div>
+                                    <div class="sp-home__form-btn col-lg-1 col-sm-12 d-flex align-items-center justify-content-center">
+                                        <div class="form-button">
+                                            <a href="#" class="btn search-btn" onclick="generateURL()"><i class="fa fa-search"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div id="moreFilters" style="display: none">
+                                        <div class="row" style="border: 1px solid var(--sp-green); border-radius: 5px;">
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12" id="areaInput" style="display: block">
+                                                <div class="form-group">
+                                                    <label>Area</label>
+                                                    <input type="text" id="area" class="form-control" placeholder="Area in the city" value="{{ area_value }}" onchange="forRadius()" on>
+                                                    <ul id="area-suggestions-list" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12" id="subareaInput" style="display: block">
+                                                <div class="form-group">
+                                                    <label>Subarea</label>
+                                                    <input type="text" id="subarea" class="form-control" placeholder="Subarea" value="{{ subarea_value }}" onchange="forRadius()">
+                                                    <ul id="subarea-suggestions-list" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12" id="pointInterestInput" style="display: block">
+                                                <div class="form-group">
+                                                    <label>Point of Interest</label>
+                                                    <input type="text" id="pointOfInterest" class="form-control" placeholder="Point of Interest" value="{{ point_interest_value }}" onchange="forRadius()">
+                                                    <ul id="pointOfInterest-suggestions-list" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-2 col-sm-12" id="radiusInput" style="display: none">
+                                                <div class="form-group">
+                                                    <label>Radius</label>
+                                                    <input type="text" id="radius" class="form-control" placeholder="Radius" value="{{ radius_value }}" onchange="forRadius()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Developer</label>
+                                                    <input type="text" id="developers" class="form-control" placeholder="Developer name" value="{{ developers_value }}">
+                                                    <ul id="developer-suggestions-list" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Property</label>
+                                                    <input type="text" id="properties" class="form-control" placeholder="Property name" value="{{ properties_value }}">
+                                                    <ul id="property-suggestions-list" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-2 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <div class="">
+                                                        <select id="date" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                            <option value="{{ date_filter }}" selected="" disabled="">{% if date_filter %}{{ date_filter }}{% else %}Date{% endif %}</option>
+                                                            <option value="today">Today</option>
+                                                            <option value="this week">This week</option>
+                                                            <option value="this month">This month</option>
+                                                            <option value="this year">This year</option>
+                                                            <option value="all">All</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Distance to School</label>
+                                                    <div class="">
+                                                        <select id="schools" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                            <option value="{{ schools_value }}" selected="" disabled="">{% if schools_value %}{{ schools_value }}{% else %}Distance to School{% endif %}</option>
+                                                            <option value="0.5 km">0.5 km</option>
+                                                            <option value="1 km">1 km</option>
+                                                            <option value="2 km">2 km</option>
+                                                            <option value="5 km">5 km</option>
+                                                            <option value="10 km">10 km</option>
+                                                            <option value="All">All</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Distance to Hospital</label>
+                                                    <div class="">
+                                                        <select id="hospitals" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                            <option value="{{ hospitals_value }}" selected="" disabled="">{% if hospitals_value %}{{ hospitals_value }}{% else %}Distance to Hospital{% endif %}</option>
+                                                            <option value="0.5 km">0.5 km</option>
+                                                            <option value="1 km">1 km</option>
+                                                            <option value="2 km">2 km</option>
+                                                            <option value="5 km">5 km</option>
+                                                            <option value="10 km">10 km</option>
+                                                            <option value="All">All</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-btn col-lg-1 col-sm-12 d-flex align-items-center justify-content-center">
+                                                <div class="form-button">
+                                                    <a href="#" class="btn search-btn" onclick="saveSearch(1)">Save search</a>
+                                                    <input type="hidden" name="saveSearch" id="saveSearch" value="">
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-btn col-lg-1 col-sm-12 d-flex align-items-center justify-content-center">
+                                                <div class="form-button">
+                                                    <a href="{% url 'manage_search' %}" class="btn search-btn">Manage search</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if war_message != "" %}
+                                <div>
+                                    <ul class="list-unstyled alert alert-danger">
+                                         <li>
+                                             {{ war_message }}
+                                         </li>
+                                    </ul>
+                                </div>{% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="collapse d-md-none" id="collapseExample">
+                    <div class="px-4">
+                        <div class="sp-home__form position-relative">
+                            <form id="search-form2">
+                                <div class="row sp-home__form-main px-2">
+                                <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Project</label>
+                                        <input type="text" id="projects2" class="form-control" placeholder="Project name" value="{{ project_value }}">
+                                        <ul id="project-suggestions-list2" class="suggestions-ul"></ul>
+                                    </div>
+                                </div>
+                                <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Property Type</label>
+                                        <div class="simple-input">
+                                            <select id="ptypes2" class="form-control select2-hidden-accessible"
+                                                tabindex="-1" aria-hidden="true">
+                                                <option value="{{ ptypes_value }}" selected disabled>{% if ptypes_value_name %}{{ ptypes_value_name }}{% else %}Property type{% endif %}</option>
+                                                <option value="1">House</option>
+                                                <option value="2">Villa</option>
+                                                <option value="3">Condo</option>
+                                                <option value="4">Apartment</option>
+                                                <option value="5">Townhouse</option>
+                                                <option value="6">Land</option>
+                                                <option value="7">Shophouse</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="sp-home__form-col col-lg-2 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Bedrooms</label>
+                                            <div class="">
+                                                <select id="bedrooms2" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                    <option value="{{ bedrooms_value }}" selected="" disabled="">{% if bedrooms_value %}{{ bedrooms_value }}{% else %}Bedrooms{% endif %}</option>
+                                                    <option value="1">1+</option>
+                                                    <option value="2">2+</option>
+                                                    <option value="3">3+</option>
+                                                    <option value="4">4+</option>
+                                                    <option value="5">5+</option>
+                                                    <option value="6">6+</option>
+                                                    <option value="">All</option>
+                                                </select>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group">
+                                        <label>Price Range</label>
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <div class="">
+                                                        <input type="text" id="price-min2" class="form-control" placeholder="Min" value="{{ price_min_value }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                    <div class="">
+                                                        <input type="text" id="price-max2" class="form-control" placeholder="Max" value="{{ price_max_value }}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div style="border: 1px solid var(--sp-green); border-radius: 5px;">
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12" id="areaInput2" style="display: block">
+                                                <div class="form-group">
+                                                    <label>Area</label>
+                                                    <input type="text" id="area2" class="form-control" placeholder="Area in the city" value="{{ area_value }}" onchange="forRadius2()" on>
+                                                    <ul id="area-suggestions-list2" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12" id="subareaInput2" style="display: block">
+                                                <div class="form-group">
+                                                    <label>Subarea</label>
+                                                    <input type="text" id="subarea2" class="form-control" placeholder="Subarea" value="{{ subarea_value }}" onchange="forRadius2()">
+                                                    <ul id="subarea-suggestions-list2" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-3 col-sm-12" id="pointInterestInput2" style="display: block">
+                                                <div class="form-group">
+                                                    <label>Point of Interest</label>
+                                                    <input type="text" id="pointOfInterest2" class="form-control" placeholder="Point of Interest" value="{{ point_interest_value }}" onchange="forRadius2()">
+                                                    <ul id="pointOfInterest-suggestions-list2" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                            <div class="sp-home__form-col col-lg-2 col-sm-12" id="radiusInput2" style="display: none">
+                                                <div class="form-group">
+                                                    <label>Radius</label>
+                                                    <input type="text" id="radius2" class="form-control" placeholder="Radius" value="{{ radius_value }}" onchange="forRadius2()">
+                                                </div>
+                                            </div>
+                                </div>
+                                <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Developer</label>
+                                                    <input type="text" id="developers2" class="form-control" placeholder="Developer name" value="{{ developers_value }}">
+                                                    <ul id="developer-suggestions-list2" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Property</label>
+                                                    <input type="text" id="properties2" class="form-control" placeholder="Property name" value="{{ properties_value }}">
+                                                    <ul id="property-suggestions-list2" class="suggestions-ul"></ul>
+                                                </div>
+                                            </div>
+                                <div class="sp-home__form-col col-lg-2 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Date</label>
+                                                    <div class="">
+                                                        <select id="date2" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                            <option value="{{ date_filter }}" selected="" disabled="">{% if date_filter %}{{ date_filter }}{% else %}Date{% endif %}</option>
+                                                            <option value="today">Today</option>
+                                                            <option value="this week">This week</option>
+                                                            <option value="this month">This month</option>
+                                                            <option value="this year">This year</option>
+                                                            <option value="all">All</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Distance to School</label>
+                                                    <div class="">
+                                                        <select id="schools2" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                            <option value="{{ schools_value }}" selected="" disabled="">{% if schools_value %}{{ schools_value }}{% else %}Distance to School{% endif %}</option>
+                                                            <option value="0.5 km">0.5 km</option>
+                                                            <option value="1 km">1 km</option>
+                                                            <option value="2 km">2 km</option>
+                                                            <option value="5 km">5 km</option>
+                                                            <option value="10 km">10 km</option>
+                                                            <option value="All">All</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                <div class="sp-home__form-col col-lg-3 col-sm-12">
+                                                <div class="form-group">
+                                                    <label>Distance to Hospital</label>
+                                                    <div class="">
+                                                        <select id="hospitals2" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                            <option value="{{ hospitals_value }}" selected="" disabled="">{% if hospitals_value %}{{ hospitals_value }}{% else %}Distance to Hospital{% endif %}</option>
+                                                            <option value="0.5 km">0.5 km</option>
+                                                            <option value="1 km">1 km</option>
+                                                            <option value="2 km">2 km</option>
+                                                            <option value="5 km">5 km</option>
+                                                            <option value="10 km">10 km</option>
+                                                            <option value="All">All</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                <div class="sp-home__form-btn col-lg-1 col-sm-12 d-flex align-items-center justify-content-center">
+                                                <div class="form-button">
+                                                    <a href="#" class="btn search-btn" onclick="saveSearch(2)">Save search</a>
+                                                    <input type="hidden" name="saveSearch" id="saveSearch2" value="">
+                                                </div>
+                                            </div>
+                                <div class="sp-home__form-btn col-lg-1 col-sm-12 d-flex align-items-center justify-content-center">
+                                                <div class="form-button">
+                                                    <a href="{% url 'manage_search' %}" class="btn search-btn">Manage search</a>
+                                                </div>
+                                            </div>
+
+                                <div class="sp-home__form-btn col-lg-1 col-sm-12 d-flex align-items-center justify-content-center">
+                                    <div class="form-button">
+                                        <a href="#" class="btn search-btn" onclick="generateURL2()"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-condos mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <div class="sp-condos__heading row justify-content-center text-center mb-4 mb-lg-5">
+                    <div class="col-lg-7">
+                        <h2 class="heading-2 mb-2">Featured Properties</h2>
+                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                            voluptatum deleniti atque corrupti quos dolores</p>
+                    </div>
+                </div>
+                <div class="sp-condos__list row">
+                    {% for property in condos %}
+                        {% if forloop.counter <= 8 %}
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <a href="/condo/{{ property.property_slug }}" class="sp-condos__item vertical">
+                                    <div class="wrapper position-relative">
+                                        <div class="swiper swiper-condos rounded-none">
+                                            <div class="swiper-wrapper">
+                                                {% if property.len_photos > 1 %}
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="{{property.list_photos.0}}" alt="{{ property.list_photos.0 }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="{{property.list_photos.1}}" alt="{{ property.list_photos.1 }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="{{property.list_photos.2}}" alt="{{ property.list_photos.2 }}">
+                                                        </div>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="/media/condos_photos/{{ property.photo_name }}/photos/photo_id_1.jpg" alt="{{ property.photo_name }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="/media/condos_photos/{{ property.photo_name }}/photos/photo_id_2.jpg" alt="{{ property.photo_name }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="/media/condos_photos/{{ property.photo_name }}/photos/photo_id_3.jpg" alt="{{ property.photo_name }}">
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                        <div class="sp-condos__btn-wrapper">
+                                            <div class="sp-btn__bg">For {{ property.listing_type }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="p-3">
+                                        <div class="d-flex align-items-center justify-content-between mb-3">
+                                            <div class="sp-condos__tags">
+                                                <div class="sp-condos__tag red">{{ property.construction_completed }}</div>
+                                                <div class="sp-condos__tag green">{{ property.floor_number }} floor</div>
+                                            </div>
+                                            {% if property in lists.wish_list.all %}
+                                                <span class="sp-condos__heart" onclick="addToWishList({{ property.pk }})">
+                                                    <i id="heart-icon-{{ property.pk }}" class="fa fa-heart"></i>
+                                                </span>
+                                            {% else %}
+                                                <span class="sp-condos__heart" onclick="addToWishList({{ property.pk }})">
+                                                    <i id="heart-icon-{{ property.pk }}" class="fa fa-heart-o"></i>
+                                                </span>
+                                            {% endif %}
+
+                                            {% if property in lists.compare_list.all %}
+                                                <span class="sp-condos__compare" onclick="addToCompareList({{ property.pk }})">
+                                                    <i id="compare-icon-{{ property.pk }}" class="fa fa-check-circle"></i>
+                                                </span>
+                                            {% else %}
+                                                <span class="sp-condos__compare" onclick="addToCompareList({{ property.pk }})">
+                                                    <i id="compare-icon-{{ property.pk }}" class="fa fa-check"></i>
+                                                </span>
+                                            {% endif %}
+
+                                        </div>
+                                        <div class="sp-condos__info border-bottom pb-3 mb-3">
+                                            <p class="sp-condos__title-link mb-3">{{ property.area }}, {{ property.location }}, {{ property.address }}</p>
+                                            <div class="sp-condos__data mb-3">
+                                                <div class="sp-condos__data-item">
+                                                    <i class="fa fa-solid fa-bed"></i>
+                                                    {{ property.bedrooms }}
+                                                </div>
+                                                <div class="sp-condos__data-item">
+                                                    <i class="fa fa-solid fa-bath"></i>
+                                                    {{ property.bathrooms }}
+                                                </div>
+                                                <div class="sp-condos__data-item">
+                                                    <i class="fa fa-solid fa-building-o"></i>
+                                                    {{ property.property_size }} SqM
+                                                </div>
+                                                <div class="sp-condos__data-item">
+                                                    <i class="fa fa-solid fa-building"></i>
+                                                    {{ property.property_type }}
+                                                </div>
+                                            </div>
+                                            <p class="sp-condos__title-link">{{ property.property_name }}</p>
+                                        </div>
+                                        <div
+                                            class="sp-condos__price d-flex flex-column justify-content-between align-items-start">
+                                            <div class="d-flex align-items-center justify-content-between w-100 flex-wrap">
+                                                <p>7,000 THB</p>
+                                                <p>70 THB/SqM</p>
+                                                {% if available_unit.listing_type == 'Sell&Rent' %}
+                                                    <p>{{ available_unit.sold_price }}</p>
+                                                    <p>({{ available_unit.sold_price }} / SqM)</p>
+                                                    <p>{{ available_unit.sold_price }}</p>
+                                                    <p>({{ available_unit.price_per_sqm_rent }} / SqM)</p>
+                                                {% endif %}
+                                                {% if available_unit.listing_type == 'Sell' %}
+                                                    <p>{{ available_unit.sold_price }} </p>
+                                                    <p>({{ available_unit.price_per_sqm_sold }} / SqM)</p>
+                                                {% endif %}
+                                                 {% if available_unit.listing_type == 'Rent' %}
+                                                    <p>{{ available_unit.sold_price }}</p>
+                                                    <p>({{ available_unit.price_per_sqm_rent }} / SqM)</p>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <!-- <div class="d-flex align-items-center justify-content-center text-center">
+                    <div class="btn more">Explore More Properties</div>
+                </div> -->
+            </div>
+        </section>
+
+        <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-3">Text Block</h2>
+                <p class="mb-3">The Muve Ram 22 is conveniently located just 410 m from 7-Eleven Ramkhamhaeng 25 Branch
+                    (00704), which can be reached within 6 mins. by foot.</p>
+                <p class="mb-2">There are many other shops situated in the area of The Muve Ram 22, the 3 closest being:
+                </p>
+                <ul class="mb-3">
+                    <li>Top Soi 24 Eyeglasses is 320 m away (about 4 mins. by foot)</li>
+                    <li>6006 Cps Big C Ramkhamhaeng is 290 m away (about 4 mins. by foot)</li>
+                    <li>K. Accessories Huamark is 400 m away (about 6 mins. by foot)</li>
+                </ul>
+                <p class="mb-2">The surrounding area, where The Muve Ram 22 is situated, offers a wide variety of
+                    restaurants. See the closest of them below:</p>
+                <ul class="mb-3">
+                    <li>Ginzaab Delivery is 450 m away (a walk of about 6 mins.)</li>
+                    <li>Hat Yai Fried Chicken is 470 m away (a walk of about 6 mins.)</li>
+                    <li>Texas Chicken Ramkhamhaeng Soi 24 is 460 m away (a walk of about 6 mins.)</li>
+                </ul>
+                <p class="mb-2">Rak Fun Ram 21 Clinic is the nearest health facility, which is 570 m away (you can walk
+                    there in 8 mins.) from the project, while the closest schools in the proximity of The Muve Ram 22
+                    are:</p>
+                <ul class="mb-3">
+                    <li>RU Demonstration School is 360 m away (about 5 mins. by foot)</li>
+                    <li>children's school is 320 m away (about 4 mins. by foot)</li>
+                    <li>Opinion is 260 m away (about 3 mins. by foot)</li>
+                </ul>
+                <p>Suvarnabhumi Airport is located 24.6 km from The Muve Ram 22 and it takes about 25 mins. by car or
+                    taxi (depending on the traffic) to get there.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sp-footer py-3">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Thailand
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                        <li><a class="dropdown-item" href="#">Nepal</a></li>
+                        <li><a class="dropdown-item" href="#">India</a></li>
+                        <li><a class="dropdown-item" href="#">China</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Buy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Rent</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sell</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Projects</a></li>
+            </ul>
+            <div class="d-flex flex-column flex-sm-row justify-content-between">
+                <ul class="nav justify-content-center justify-content-sm-start">
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Privacy</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Press</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Careers</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Sitemap</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Virtual Real Estate</a></li>
+                </ul>
+                <p class="text-center">© 2023 <a href="#">bangkok-condos-for-sale.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'property/js/script.js' %}"></script>
+    <script>
+
+        function initializeMap() {
+          var map = new google.maps.Map(document.getElementById('sp-map'), {
+            zoom: 12,
+            center: { lat: {{ average_latitude }}, lng: {{ average_longitude }} },
+          });
+
+          {% for property in condos %}
+
+          var marker = new google.maps.Marker({
+            position: { lat: parseFloat('{{ property.latitude }}'), lng: parseFloat('{{ property.longitude }}') },
+            map: map,
+            title: 'title',
+            animation: google.maps.Animation.DROP,
+          });
+
+
+          var infowindow = new google.maps.InfoWindow({
+            closeButton: false, // Disable close button
+          });
+
+          marker.addListener(
+            'click',
+            (function (
+              photoName,
+              projectName,
+              propertySlug,
+              bedrooms,
+              bathrooms,
+              size,
+              type,
+              area,
+              location,
+              address,
+              price
+            ) {
+              return function () {
+                infowindow.setContent(
+                  generateInfowincontent(
+                    photoName,
+                    projectName,
+                    propertySlug,
+                    bedrooms,
+                    bathrooms,
+                    size,
+                    type,
+                    area,
+                    location,
+                    address,
+                    price
+                  )
+                );
+                infowindow.open(map, this);
+              };
+            })(
+              '{% if property.len_photos > 1 %}{{ property.list_photos.0 }}{% else %}{{ property.get_photo_name }}{% endif %}',
+              '{{ property.property_name }}',
+              '{{ property.property_slug }}',
+              '{{ property.bedrooms }}',
+              '{{ property.bathrooms }}',
+              '{{ property.property_size }}',
+              '{{ property.property_type }}',
+              '{{ property.area }}',
+              '{{ property.location }}',
+              '{{ property.address }}',
+              '{% if property.listing_type == 'Sell&Rent' %}{{ property.sold_price }} / {{ property.rent_price }}{% else %}{% if property.listing_type == 'Sell' %}{{ property.sold_price }}{% else %}{{ property.rent_price }}{% endif %}{% endif %}'
+            )
+          );
+
+          map.addListener('click', function () {
+            infowindow.close();
+          });
+
+          {% endfor %}
+
+            function generateInfowincontent(photoName, projectName, propertySlug, bedrooms, bathrooms, size, type, area, location, address, price) {
+              var html = '<div class="sp-map__inner">';
+              html += '<a href="/condo/' + propertySlug + '/" style="color: var(--sp-black);">'
+              html += '<img src="' + photoName + '" alt="' + photoName + '">';
+              html += '<p style="font-size: 1.2rem;font-weight: 600;color: var(--sp-red); padding: 10px;">' + price + '</p>'
+              html += '<p class="sp-condos__title-link" style="font-weight: 500; font-size: 1rem; padding: 0px 10px 0px 10px;">' + projectName + '</p>';
+              html += '<p class="sp-condos__address" style="padding: 5px 10px 2px 10px;">' + area + ', ' + location + ', ' + address + '</p>'
+              html += '<div class="sp-condos__info border-bottom pb-3 mb-3" style="padding: 0px 10px"><div class="sp-condos__data"><div class="sp-condos__data-item"><i class="fa fa-solid fa-bed"></i>' + bedrooms + '</div><div class="sp-condos__data-item"><i class="fa fa-solid fa-bath"></i>' + bathrooms + '</div><div class="sp-condos__data-item"><svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"viewBox="0 0 320 512"><path d="M99.1 105.4C79 114 68.2 127.2 65.2 144.8c-2.4 14.1-.7 23.2 2 29.4c2.8 6.3 7.9 12.4 16.7 18.6c19.2 13.4 48.3 22.1 84.9 32.5c1 .3 1.9 .6 2.9 .8c32.7 9.3 72 20.6 100.9 40.7c15.7 10.9 29.9 25.5 38.6 45.1c8.8 19.8 10.8 42 6.6 66.3c-7.3 42.5-35.3 71.7-71.8 87.3c-35.4 15.2-79.1 17.9-123.7 10.9l-.2 0 0 0c-24-3.9-62.7-17.1-87.6-25.6c-4.8-1.7-9.2-3.1-12.8-4.3C5.1 440.8-3.9 422.7 1.6 405.9s23.7-25.8 40.5-20.3c4.9 1.6 10.2 3.4 15.9 5.4c25.4 8.6 56.4 19.2 74.4 22.1c36.8 5.7 67.5 2.5 88.5-6.5c20.1-8.6 30.8-21.8 33.9-39.4c2.4-14.1 .7-23.2-2-29.4c-2.8-6.3-7.9-12.4-16.7-18.6c-19.2-13.4-48.3-22.1-84.9-32.5c-1-.3-1.9-.6-2.9-.8c-32.7-9.3-72-20.6-100.9-40.7c-15.7-10.9-29.9-25.5-38.6-45.1c-8.8-19.8-10.8-42-6.6-66.3l31.5 5.5L2.1 133.9C9.4 91.4 37.4 62.2 73.9 46.6c35.4-15.2 79.1-17.9 123.7-10.9c13 2 52.4 9.6 66.6 13.4c17.1 4.5 27.2 22.1 22.7 39.2s-22.1 27.2-39.2 22.7c-11.2-3-48.1-10.2-60.1-12l4.9-31.5-4.9 31.5c-36.9-5.8-67.5-2.5-88.6 6.5z" /></svg>' + size + ' SqM</div> <div class="sp-condos__data-item"><i class="fa fa-solid fa-building"></i>' + type + '</div></div></div>';
+              html += '</a>';
+              html += '</div>';
+              return html;
+            }
+        }
+
+        function moreFilters() {
+            var moreFiltersInput = document.getElementById('moreFiltersInput').value;
+            if (moreFiltersInput === '0') {
+                document.getElementById('moreFilters').style.display = 'block';
+                document.getElementById('moreFiltersLink').textContent = "Close";
+                document.getElementById('moreFiltersInput').value = '1';
+            }
+            else {
+                document.getElementById('moreFilters').style.display = 'none';
+                document.getElementById('moreFiltersLink').textContent = "More";
+                document.getElementById('moreFiltersInput').value = '0';
+            }
+        }
+
+
+
+            function generateURL() {
+                var urlMain = "http://127.0.0.1:8000/index/";
+
+                url = createURL()
+
+                window.location.href = urlMain + url;
+
+            }
+
+            function createURL() {
+                var url = "";
+
+                var priceMin = document.getElementById("price-min").value;
+                if (priceMin) {
+                    url += ";price-min=" + priceMin;
+                }
+
+                var priceMax = document.getElementById("price-max").value;
+                if (priceMax) {
+                    url += ";price-max=" + priceMax;
+                }
+
+                var area = document.getElementById("area").value;
+                if (area) {
+                    url += ";area=" + area;
+                }
+
+                var projects = document.getElementById("projects").value;
+                if (projects) {
+                    url += ";projects=" + projects;
+                }
+
+                var developers = document.getElementById("developers").value;
+                if (developers) {
+                    url += ";developers=" + developers;
+                }
+
+                var properties = document.getElementById("properties").value;
+                if (properties) {
+                    url += ";properties=" + properties;
+                }
+
+                var subarea = document.getElementById("subarea").value;
+                if (subarea) {
+                    url += ";subarea=" + subarea;
+                }
+
+                var propertyType = document.getElementById("ptypes").value;
+                if (propertyType) {
+                    url += ";ptypes=" + propertyType;
+                }
+
+                var bedrooms = document.getElementById("bedrooms").value;
+                if (bedrooms) {
+                    url += ";bedrooms=" + bedrooms;
+                }
+
+                var radius = document.getElementById("radius").value;
+                if (radius) {
+                    url += ";radius=" + radius;
+                }
+
+                var date = document.getElementById("date").value;
+                if (date) {
+                    url += ";date=" + date;
+                }
+
+                var pointOfInterest = document.getElementById("pointOfInterest").value;
+                if (pointOfInterest) {
+                    url += ";pointOfInterest=" + pointOfInterest;
+                }
+
+                var schools = document.getElementById("schools").value;
+                if (schools) {
+                    url += ";schools=" + schools;
+                }
+
+                var hospitals = document.getElementById("hospitals").value;
+                if (hospitals) {
+                    url += ";hospitals=" + hospitals;
+                }
+
+                return url;
+            }
+
+
+function getAreaSuggestions(input) {
+  fetch(`/get_area_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('area-suggestions-list');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(area => {
+        const listItem = document.createElement('li');
+        listItem.textContent = area;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+function handleAreaInput() {
+  const input = document.getElementById('area').value;
+  getAreaSuggestions(input);
+}
+
+document.getElementById('area').addEventListener('input', handleAreaInput);
+
+document.addEventListener('click', function(event) {
+  const target = event.target;
+
+  if (target.classList.contains('suggestion-li') && target.parentElement.id === 'area-suggestions-list') {
+    // Клік на підказку для поля "Area"
+    document.getElementById('area').value = target.textContent;
+    document.getElementById('area-suggestions-list').innerHTML = '';
+  } else if (target.id !== 'area') {
+    // Приховати список підказок для поля "Area"
+    document.getElementById('area-suggestions-list').innerHTML = '';
+  }
+});
+
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#projects');
+  const isClickInsideSuggestions = target.matches('#project-suggestions-list li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    // Приховати список підказок для поля "Project"
+    document.getElementById('project-suggestions-list').innerHTML = '';
+  }
+});
+
+
+
+
+
+
+// Функція для отримання підказок з бази даних
+function getProjectSuggestions(input) {
+  fetch(`/get_project_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('project-suggestions-list');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(project => {
+        const listItem = document.createElement('li');
+        listItem.textContent = project;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handleProjectInput() {
+  const input = document.getElementById('projects').value;
+  getProjectSuggestions(input);
+}
+
+// Обробник події вводу для поля "Project"
+document.getElementById('projects').addEventListener('input', handleProjectInput);
+
+// Обробник події кліку на підказку
+document.getElementById('project-suggestions-list').addEventListener('click', event => {
+  const selectedProject = event.target.textContent;
+  document.getElementById('projects').value = selectedProject;
+  document.getElementById('project-suggestions-list').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#projects');
+  const isClickInsideSuggestions = target.matches('#project-suggestions-list li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    document.getElementById('project-suggestions-list').innerHTML = '';
+  }
+});
+
+
+
+
+
+// Функція для отримання підказок з бази даних
+function getDeveloperSuggestions(input) {
+  fetch(`/get_developer_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('developer-suggestions-list');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(developer => {
+        const listItem = document.createElement('li');
+        listItem.textContent = developer;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handleDeveloperInput() {
+  const input = document.getElementById('developers').value;
+  getDeveloperSuggestions(input);
+}
+
+// Обробник події вводу для поля "Developer"
+document.getElementById('developers').addEventListener('input', handleDeveloperInput);
+
+// Обробник події кліку на підказку
+document.getElementById('developer-suggestions-list').addEventListener('click', event => {
+  const selectedDeveloper = event.target.textContent;
+  document.getElementById('developers').value = selectedDeveloper;
+  document.getElementById('developer-suggestions-list').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#developers');
+  const isClickInsideSuggestions = target.matches('#developer-suggestions-list li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    document.getElementById('developer-suggestions-list').innerHTML = '';
+  }
+});
+
+
+
+// Функція для отримання підказок з бази даних
+function getPropertySuggestions(input) {
+  fetch(`/get_property_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('property-suggestions-list');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(property => {
+        const listItem = document.createElement('li');
+        listItem.textContent = property;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handlePropertyInput() {
+  const input = document.getElementById('properties').value;
+  getPropertySuggestions(input);
+}
+
+// Обробник події вводу для поля "Property"
+document.getElementById('properties').addEventListener('input', handlePropertyInput);
+
+// Обробник події кліку на підказку
+document.getElementById('property-suggestions-list').addEventListener('click', event => {
+  const selectedProperty = event.target.textContent;
+  document.getElementById('properties').value = selectedProperty;
+  document.getElementById('property-suggestions-list').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#properties');
+  const isClickInsideSuggestions = target.matches('#property-suggestions-list li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    document.getElementById('property-suggestions-list').innerHTML = '';
+  }
+});
+
+
+
+// Функція для отримання підказок з бази даних
+function getAddressSuggestions(input) {
+  fetch(`/get_address_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('subarea-suggestions-list');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(address => {
+        const listItem = document.createElement('li');
+        listItem.textContent = address;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handleAddressInput() {
+  const input = document.getElementById('subarea').value;
+  getAddressSuggestions(input);
+}
+
+// Обробник події вводу для поля "Subarea"
+document.getElementById('subarea').addEventListener('input', handleAddressInput);
+
+// Обробник події кліку на підказку
+document.getElementById('subarea-suggestions-list').addEventListener('click', event => {
+  const selectedAddress = event.target.textContent;
+  document.getElementById('subarea').value = selectedAddress;
+  document.getElementById('subarea-suggestions-list').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#subarea');
+  const isClickInsideSuggestions = target.matches('#subarea-suggestions-list li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    // Приховати список підказок для поля "Subarea"
+    document.getElementById('subarea-suggestions-list').innerHTML = '';
+  }
+});
+
+
+
+
+
+
+
+
+// Список точок зацікавленості
+var pointsOfInterest = ['Grand Palace', 'Temple of the Emerald Buddha', 'Wat Arun', 'Wat Pho', 'Golden Buddha Temple', 'Jim Thompson House', 'Damnoen Saduak Floating Market', 'Chatuchak Weekend Market', 'Lumpini Park', 'Wat Saket (Golden Mount)', 'Wat Traimit (Temple of the Golden Buddha)', 'Chao Phraya River', 'MBK Center', 'Wat Benchamabophit (Marble Temple)', 'Asiatique The Riverfront', 'Wat Suthat', 'Erawan Shrine', 'Wat Mahathat', 'Chinatown', 'Wat Ratchanatdaram', 'Siam Paragon', 'Victory Monument', 'Safari World', 'Dusit Palace', 'Bangkok Art and Culture Centre', 'Wat Phra Kaew', 'Siam Square', 'The Jim Thompson Art Center', 'The Golden Mount (Wat Saket)', 'Yaowarat (Chinatown)', 'Soi Cowboy', 'Wat Kalayanamit', 'Bangkok National Museum', 'Wat Traimit (Temple of the Golden Buddha)', 'The Erawan Museum', 'Benjasiri Park', 'CentralWorld', 'Wat Phra Si Rattana Satsadaram (Wat Phra Kaew)', 'The Mall Bangkapi', 'Sea Life Bangkok Ocean World', 'Wat Suthat and the Giant Swing', 'Siam Niramit', 'Wat Benchamabophit (The Marble Temple)', 'Chao Mae Tubtim Shrine', 'Temple of the Reclining Buddha (Wat Pho)', 'Victory Monument BTS Station', 'Bangkok City Pillar Shrine', 'Ratchadamnoen Avenue', 'Wat Mahathat', 'The Golden Buddha (Wat Traimit)', 'Bangkok Floating Market at Taling Chan', 'Loha Prasat (Metal Palace)', 'Sanam Luang', 'Dusit Zoo', 'Siam Park City', 'Wat Intharawihan (Standing Buddha)', 'Wat Indra Viharn', 'Wat Phra Si Maha Uma Devi', 'Siriraj Medical Museum', 'Chitralada Palace', 'Phra Sumen Fort', 'Rama VIII Bridge', 'Thonburi Canals and Khlongs', 'Siam Ocean World', 'Rajadamnern Thai Boxing Stadium', 'Snake Farm (Queen Saovabha Memorial Institute)', 'The Ananda Samakhom Throne Hall', 'King Rama IX Park', 'Queen Sirikit Museum of Textiles', 'Giant Swing', 'Vimanmek Mansion', 'The National Museum & Wang Na Palace', 'Wat Prayoon', 'The Bangkokian Museum', 'Dinosaur Planet Bangkok', 'Siam Paragon Mall', 'Wat Benchamabophit Dusitvanaram (Marble Temple)', 'Bangkok Art and Culture Centre', 'Museum of Contemporary Art (MOCA)', 'The Sukhothai Bangkok', 'Erawan Museum', 'Bangkok Seashell Museum', 'Jim Thompson Memorial House', 'Thailand Cultural Centre', 'Benjakitti Park', 'Flow House Bangkok'];
+
+const pointOfInterestInput = document.getElementById('pointOfInterest');
+const suggestionsList = document.getElementById('pointOfInterest-suggestions-list');
+
+// Додавання обробника події input до поля введення
+pointOfInterestInput.addEventListener('input', function() {
+  const inputValue = pointOfInterestInput.value;
+  getPointOfInterestSuggestions2(inputValue);
+});
+
+// Функція для отримання підказок зі списку точок зацікавленості
+function getPointOfInterestSuggestions2(input) {
+  suggestionsList.innerHTML = '';
+
+  // Фільтрація підказок, що відповідають введеному тексту
+  const filteredSuggestions = pointsOfInterest.filter(suggestion => suggestion.toLowerCase().includes(input.toLowerCase()));
+
+  // Додавання підказок до списку
+  filteredSuggestions.forEach(suggestion => {
+    const listItem = document.createElement('li');
+    listItem.textContent = suggestion;
+    listItem.classList.add('suggestion-li');
+    listItem.addEventListener('click', () => {
+      pointOfInterestInput.value = suggestion;
+      suggestionsList.innerHTML = '';
+    });
+    suggestionsList.appendChild(listItem);
+  });
+}
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#pointOfInterest');
+  const isClickInsideSuggestions = target.matches('#pointOfInterest-suggestions-list li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    // Приховати список підказок для поля "Point of Interest"
+    suggestionsList.innerHTML = '';
+  }
+});
+
+
+
+
+
+
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
+
+function addToWishList(propertyId) {
+  event.preventDefault();
+  var heartIcon = document.getElementById('heart-icon-' + propertyId);
+
+  const url = `/add-to-wish-list/${propertyId}/`;
+  const csrftoken = getCookie('csrftoken');  // Отримання CSRF-токена з cookies
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken,  // Додавання CSRF-токена до заголовків запиту
+    },
+    body:JSON.stringify({ property_id: propertyId }),
+  })
+    .then(response => {
+      if (response.ok) {
+        // Запит виконано успішно
+        return response.json();
+      } else {
+        throw new Error('Failed to add property to wish list.');
+      }
+    })
+    .then(data => {
+      // Оновити стан сердечка або виконати інші дії
+      if (data.is_added) {
+        heartIcon.classList.remove('fa-heart-o');
+        heartIcon.classList.add('fa-heart');
+        console.log('Property added to wish list.');
+      } else {
+        heartIcon.classList.remove('fa-heart');
+        heartIcon.classList.add('fa-heart-o');
+        console.log('Property removed from wish list.');
+      }
+    })
+    .catch(error => {
+      console.error('Failed to add/remove property to/from wish list:', error);
+    });
+}
+
+
+
+function addToCompareList(propertyId) {
+  event.preventDefault();
+  var compareIcon = document.getElementById('compare-icon-' + propertyId);
+
+  const url = `/add-to-compare-list/${propertyId}/`;
+  const csrftoken = getCookie('csrftoken');
+
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': csrftoken,
+    },
+    body: JSON.stringify({ property_id: propertyId }),
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Failed to add property to compare list.');
+      }
+    })
+    .then(data => {
+      if (data.is_added) {
+        compareIcon.classList.remove('fa-check');
+        compareIcon.classList.add('fa-check-circle');
+        console.log('Property added to compare list.');
+      } else {
+        compareIcon.classList.remove('fa-check-circle');
+        compareIcon.classList.add('fa-check');
+        console.log('Property removed from compare list.');
+      }
+    })
+    .catch(error => {
+      console.error('Failed to add/remove property to/from compare list:', error);
+    });
+}
+
+
+
+
+function saveSearch(num) {
+
+  if (num === 1) {
+      url = createURL()
+      console.log(url)
+  }
+
+  if (num === 2) {
+      url = createURL2()
+      console.log(url)
+  }
+
+  // Отримати CSRF-токен
+  var csrftoken = getCookie('csrftoken');
+
+  // Створити об'єкт XMLHttpRequest
+  var xhr = new XMLHttpRequest();
+
+  // Отримати значення search з URL
+  var searchValue = window.location.pathname.split('/').pop(); // Отримати останній шматок URL
+
+  // Налаштувати запит POST до серверної сторони
+  xhr.open("POST", "/save-search/" + url, true);
+
+  // Встановити заголовки запиту (включаючи CSRF-токен)
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+
+  // Зберегти пошук як об'єкт JSON
+  var searchData = {
+    search: searchValue
+  };
+
+  // Перетворити об'єкт JSON на рядок
+  var jsonData = JSON.stringify(searchData);
+
+  // Обробник події завершення запиту
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // Запит успішно виконаний
+      console.log("Пошук успішно збережений.");
+    } else {
+      // Виникла помилка під час виконання запиту
+      console.log("Виникла помилка під час збереження пошуку.");
+    }
+  };
+
+  // Надіслати запит з даними пошуку
+  xhr.send(jsonData);
+}
+
+
+
+
+function forRadius() {
+    var areaInput = document.getElementById('areaInput');
+    var subareaInput = document.getElementById('subareaInput');
+    var pointInterestInput = document.getElementById('pointInterestInput');
+    var radiusInput = document.getElementById('radiusInput');
+
+    var area = document.getElementById('area').value;
+    var subarea = document.getElementById('subarea').value;
+    var pointInterest = document.getElementById('pointOfInterest').value;
+    var radius = document.getElementById('radius').value;
+
+    if (area !== '') {
+        subareaInput.style.display = 'none';
+        pointInterestInput.style.display = 'none';
+        radiusInput.style.display = 'block';
+        return;
+    }
+
+    if (subarea !== '') {
+        areaInput.style.display = 'none';
+        pointInterestInput.style.display = 'none';
+        radiusInput.style.display = 'block';
+        return;
+    }
+
+    if (pointInterest !== '') {
+        subareaInput.style.display = 'none';
+        areaInput.style.display = 'none';
+        radiusInput.style.display = 'block';
+        return;
+    }
+
+    areaInput.style.display = 'block';
+    subareaInput.style.display = 'block';
+    pointInterestInput.style.display = 'block';
+    radiusInput.style.display = 'none';
+}
+forRadius();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function generateURL2() {
+    var urlMain = "http://127.0.0.1:8000/index/";
+
+    var url = createURL2();
+
+    window.location.href = urlMain + url;
+}
+
+function createURL2() {
+    var url = "";
+
+    var priceMin = document.getElementById("price-min2").value;
+    if (priceMin) {
+        url += ";price-min=" + priceMin;
+    }
+
+    var priceMax = document.getElementById("price-max2").value;
+    if (priceMax) {
+        url += ";price-max=" + priceMax;
+    }
+
+    var area = document.getElementById("area2").value;
+    if (area) {
+        url += ";area=" + area;
+    }
+
+    var projects = document.getElementById("projects2").value;
+    if (projects) {
+        url += ";projects=" + projects;
+    }
+
+    var developers = document.getElementById("developers2").value;
+    if (developers) {
+        url += ";developers=" + developers;
+    }
+
+    var properties = document.getElementById("properties2").value;
+    if (properties) {
+        url += ";properties=" + properties;
+    }
+
+    var subarea = document.getElementById("subarea2").value;
+    if (subarea) {
+        url += ";subarea=" + subarea;
+    }
+
+    var propertyType = document.getElementById("ptypes2").value;
+    if (propertyType) {
+        url += ";ptypes=" + propertyType;
+    }
+
+    var bedrooms = document.getElementById("bedrooms2").value;
+    if (bedrooms) {
+        url += ";bedrooms=" + bedrooms;
+    }
+
+    var radius = document.getElementById("radius2").value;
+    if (radius) {
+        url += ";radius=" + radius;
+    }
+
+    var date = document.getElementById("date2").value;
+    if (date) {
+        url += ";date=" + date;
+    }
+
+    var pointOfInterest = document.getElementById("pointOfInterest2").value;
+    if (pointOfInterest) {
+        url += ";pointOfInterest=" + pointOfInterest;
+    }
+
+    var schools = document.getElementById("schools2").value;
+    if (schools) {
+        url += ";schools=" + schools;
+    }
+
+    var hospitals = document.getElementById("hospitals2").value;
+    if (hospitals) {
+        url += ";hospitals=" + hospitals;
+    }
+
+    return url;
+}
+
+function getAreaSuggestions2(input) {
+  fetch(`/get_area_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('area-suggestions-list2');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(area => {
+        const listItem = document.createElement('li');
+        listItem.textContent = area;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+function handleAreaInput2() {
+  const input = document.getElementById('area2').value;
+  getAreaSuggestions2(input);
+}
+
+document.getElementById('area2').addEventListener('input', handleAreaInput2);
+
+document.addEventListener('click', function(event) {
+  const target = event.target;
+
+  if (target.classList.contains('suggestion-li') && target.parentElement.id === 'area-suggestions-list2') {
+    // Клік на підказку для поля "Area"
+    document.getElementById('area2').value = target.textContent;
+    document.getElementById('area-suggestions-list2').innerHTML = '';
+  } else if (target.id !== 'area2') {
+    // Приховати список підказок для поля "Area"
+    document.getElementById('area-suggestions-list2').innerHTML = '';
+  }
+});
+
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#projects2');
+  const isClickInsideSuggestions = target.matches('#project-suggestions-list2 li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    // Приховати список підказок для поля "Project"
+    document.getElementById('project-suggestions-list2').innerHTML = '';
+  }
+});
+
+
+
+// Функція для отримання підказок з бази даних
+function getProjectSuggestions2(input) {
+  fetch(`/get_project_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('project-suggestions-list2');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(project => {
+        const listItem = document.createElement('li');
+        listItem.textContent = project;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handleProjectInput2() {
+  const input = document.getElementById('projects2').value;
+  getProjectSuggestions2(input);
+}
+
+// Обробник події вводу для поля "Project"
+document.getElementById('projects2').addEventListener('input', handleProjectInput2);
+
+// Обробник події кліку на підказку
+document.getElementById('project-suggestions-list2').addEventListener('click', event => {
+  const selectedProject = event.target.textContent;
+  document.getElementById('projects2').value = selectedProject;
+  document.getElementById('project-suggestions-list2').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#projects2');
+  const isClickInsideSuggestions = target.matches('#project-suggestions-list2 li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    document.getElementById('project-suggestions-list2').innerHTML = '';
+  }
+});
+
+
+
+// Функція для отримання підказок з бази даних
+function getDeveloperSuggestions2(input) {
+  fetch(`/get_developer_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('developer-suggestions-list2');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(developer => {
+        const listItem = document.createElement('li');
+        listItem.textContent = developer;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handleDeveloperInput2() {
+  const input = document.getElementById('developers2').value;
+  getDeveloperSuggestions2(input);
+}
+
+// Обробник події вводу для поля "Developer"
+document.getElementById('developers2').addEventListener('input', handleDeveloperInput2);
+
+// Обробник події кліку на підказку
+document.getElementById('developer-suggestions-list2').addEventListener('click', event => {
+  const selectedDeveloper = event.target.textContent;
+  document.getElementById('developers2').value = selectedDeveloper;
+  document.getElementById('developer-suggestions-list2').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#developers2');
+  const isClickInsideSuggestions = target.matches('#developer-suggestions-list2 li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    document.getElementById('developer-suggestions-list2').innerHTML = '';
+  }
+});
+
+
+
+// Функція для отримання підказок з бази даних
+function getPropertySuggestions2(input) {
+  fetch(`/get_property_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('property-suggestions-list2');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(property => {
+        const listItem = document.createElement('li');
+        listItem.textContent = property;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handlePropertyInput2() {
+  const input = document.getElementById('properties2').value;
+  getPropertySuggestions2(input);
+}
+
+// Обробник події вводу для поля "Property"
+document.getElementById('properties2').addEventListener('input', handlePropertyInput2);
+
+// Обробник події кліку на підказку
+document.getElementById('property-suggestions-list2').addEventListener('click', event => {
+  const selectedProperty = event.target.textContent;
+  document.getElementById('properties2').value = selectedProperty;
+  document.getElementById('property-suggestions-list2').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#properties2');
+  const isClickInsideSuggestions = target.matches('#property-suggestions-list2 li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    document.getElementById('property-suggestions-list2').innerHTML = '';
+  }
+});
+
+
+
+
+// Функція для отримання підказок з бази даних
+function getAddressSuggestions2(input) {
+  fetch(`/get_address_suggestions/?input=${input}`)
+    .then(response => response.json())
+    .then(data => {
+      const suggestionsList = document.getElementById('subarea-suggestions-list2');
+      suggestionsList.innerHTML = '';
+
+      // Додавання підказок до списку
+      data.slice(0, 20).forEach(address => {
+        const listItem = document.createElement('li');
+        listItem.textContent = address;
+        listItem.classList.add('suggestion-li');
+        suggestionsList.appendChild(listItem);
+      });
+    });
+}
+
+// Отримання значення з поля вводу та запит підказок
+function handleAddressInput2() {
+  const input = document.getElementById('subarea2').value;
+  getAddressSuggestions2(input);
+}
+
+// Обробник події вводу для поля "Subarea"
+document.getElementById('subarea2').addEventListener('input', handleAddressInput2);
+
+// Обробник події кліку на підказку
+document.getElementById('subarea-suggestions-list2').addEventListener('click', event => {
+  const selectedAddress = event.target.textContent;
+  document.getElementById('subarea2').value = selectedAddress;
+  document.getElementById('subarea-suggestions-list2').innerHTML = '';
+});
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#subarea2');
+  const isClickInsideSuggestions = target.matches('#subarea-suggestions-list2 li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    // Приховати список підказок для поля "Subarea"
+    document.getElementById('subarea-suggestions-list2').innerHTML = '';
+  }
+});
+
+
+
+// Список точок зацікавленості
+var pointsOfInterest2 = ['Grand Palace', 'Temple of the Emerald Buddha', 'Wat Arun', 'Wat Pho', 'Golden Buddha Temple', 'Jim Thompson House', 'Damnoen Saduak Floating Market', 'Chatuchak Weekend Market', 'Lumpini Park', 'Wat Saket (Golden Mount)', 'Wat Traimit (Temple of the Golden Buddha)', 'Chao Phraya River', 'MBK Center', 'Wat Benchamabophit (Marble Temple)', 'Asiatique The Riverfront', 'Wat Suthat', 'Erawan Shrine', 'Wat Mahathat', 'Chinatown', 'Wat Ratchanatdaram', 'Siam Paragon', 'Victory Monument', 'Safari World', 'Dusit Palace', 'Bangkok Art and Culture Centre', 'Wat Phra Kaew', 'Siam Square', 'The Jim Thompson Art Center', 'The Golden Mount (Wat Saket)', 'Yaowarat (Chinatown)', 'Soi Cowboy', 'Wat Kalayanamit', 'Bangkok National Museum', 'Wat Traimit (Temple of the Golden Buddha)', 'The Erawan Museum', 'Benjasiri Park', 'CentralWorld', 'Wat Phra Si Rattana Satsadaram (Wat Phra Kaew)', 'The Mall Bangkapi', 'Sea Life Bangkok Ocean World', 'Wat Suthat and the Giant Swing', 'Siam Niramit', 'Wat Benchamabophit (The Marble Temple)', 'Chao Mae Tubtim Shrine', 'Temple of the Reclining Buddha (Wat Pho)', 'Victory Monument BTS Station', 'Bangkok City Pillar Shrine', 'Ratchadamnoen Avenue', 'Wat Mahathat', 'The Golden Buddha (Wat Traimit)', 'Bangkok Floating Market at Taling Chan', 'Loha Prasat (Metal Palace)', 'Sanam Luang', 'Dusit Zoo', 'Siam Park City', 'Wat Intharawihan (Standing Buddha)', 'Wat Indra Viharn', 'Wat Phra Si Maha Uma Devi', 'Siriraj Medical Museum', 'Chitralada Palace', 'Phra Sumen Fort', 'Rama VIII Bridge', 'Thonburi Canals and Khlongs', 'Siam Ocean World', 'Rajadamnern Thai Boxing Stadium', 'Snake Farm (Queen Saovabha Memorial Institute)', 'The Ananda Samakhom Throne Hall', 'King Rama IX Park', 'Queen Sirikit Museum of Textiles', 'Giant Swing', 'Vimanmek Mansion', 'The National Museum & Wang Na Palace', 'Wat Prayoon', 'The Bangkokian Museum', 'Dinosaur Planet Bangkok', 'Siam Paragon Mall', 'Wat Benchamabophit Dusitvanaram (Marble Temple)', 'Bangkok Art and Culture Centre', 'Museum of Contemporary Art (MOCA)', 'The Sukhothai Bangkok', 'Erawan Museum', 'Bangkok Seashell Museum', 'Jim Thompson Memorial House', 'Thailand Cultural Centre', 'Benjakitti Park', 'Flow House Bangkok'];
+
+
+const pointOfInterestInput2 = document.getElementById('pointOfInterest2');
+const suggestionsList2 = document.getElementById('pointOfInterest-suggestions-list2');
+
+// Додавання обробника події input до поля введення
+pointOfInterestInput2.addEventListener('input', function() {
+  const inputValue = pointOfInterestInput2.value;
+  getPointOfInterestSuggestions(inputValue);
+});
+
+// Функція для отримання підказок зі списку точок зацікавленості
+function getPointOfInterestSuggestions(input) {
+  suggestionsList2.innerHTML = '';
+
+  // Фільтрація підказок, що відповідають введеному тексту
+  const filteredSuggestions = pointsOfInterest2.filter(suggestion => suggestion.toLowerCase().includes(input.toLowerCase()));
+
+  // Додавання підказок до списку
+  filteredSuggestions.forEach(suggestion => {
+    const listItem = document.createElement('li');
+    listItem.textContent = suggestion;
+    listItem.classList.add('suggestion-li');
+    listItem.addEventListener('click', () => {
+      pointOfInterestInput2.value = suggestion;
+      suggestionsList2.innerHTML = '';
+    });
+    suggestionsList2.appendChild(listItem);
+  });
+}
+
+// Обробник події кліку на документ (body)
+document.body.addEventListener('click', event => {
+  const target = event.target;
+  const isClickInsideInput = target.matches('#pointOfInterest2');
+  const isClickInsideSuggestions = target.matches('#pointOfInterest-suggestions-list2 li');
+
+  if (!isClickInsideInput && !isClickInsideSuggestions) {
+    // Приховати список підказок для поля "Point of Interest"
+    suggestionsList2.innerHTML = '';
+  }
+});
+
+
+
+function forRadius2() {
+  var areaInput = document.getElementById('areaInput2');
+  var subareaInput = document.getElementById('subareaInput2');
+  var pointInterestInput = document.getElementById('pointInterestInput2');
+  var radiusInput = document.getElementById('radiusInput2');
+
+  var area = document.getElementById('area2').value;
+  var subarea = document.getElementById('subarea2').value;
+  var pointInterest = document.getElementById('pointOfInterest2').value;
+  var radius = document.getElementById('radius2').value;
+
+  if (area !== '') {
+    subareaInput.style.display = 'none';
+    pointInterestInput.style.display = 'none';
+    radiusInput.style.display = 'block';
+    return;
+  }
+
+  if (subarea !== '') {
+    areaInput.style.display = 'none';
+    pointInterestInput.style.display = 'none';
+    radiusInput.style.display = 'block';
+    return;
+  }
+
+  if (pointInterest !== '') {
+    subareaInput.style.display = 'none';
+    areaInput.style.display = 'none';
+    radiusInput.style.display = 'block';
+    return;
+  }
+
+  areaInput.style.display = 'block';
+  subareaInput.style.display = 'block';
+  pointInterestInput.style.display = 'block';
+  radiusInput.style.display = 'none';
+}
+
+forRadius2();
+
+
+
+
+
+
+    </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuNKhbP609Fb3jQassP8wqp9xdebMIT7w&callback=initializeMap" async defer></script>
+
+</body>
+
+<style>
+  .gm-ui-hover-effect {
+    display: none !important;
+    padding: 0px;
+  }
+
+  .gm-style-iw-d {
+    overflow: auto !important;
+  }
+
+
+  .gm-style-iw-c {
+    padding: 0px !important;
+  }
+
+  .sp-map #sp-map .sp-map__inner {
+    width: 360px;
+    }
+
+
+
+
+.suggestions-ul {
+  position: absolute;
+  width: 200px;
+  background-color: #f5f5f5;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  z-index: 999;
+}
+
+.suggestion-li:hover {
+  background-color: #e6e6e6;
+}
+
+
+.suggestion-li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+
+
+</style>
+
+</html>

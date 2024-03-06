@@ -1,0 +1,272 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'property/css/style.css' %}">
+    <meta name="description" content="{{ developer.SEO_description }}"/>
+    <title>{{ developer.SEO_title }}</title>
+</head>
+
+<body>
+    <header class="sp-header py-1">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand d-inline-block me-4" href="#">
+                    Logo
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+                    id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink1"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Buy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Rent
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Sell
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                        <ul class="navbar-nav me-lg-2">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    AED
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink1">
+                                    <li><a class="dropdown-item" href="#">THB</a></li>
+                                    <li><a class="dropdown-item" href="#">ARS</a></li>
+                                    <li><a class="dropdown-item" href="#">AUD</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    EN
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink2">
+                                    <li><a class="dropdown-item" href="#">UA</a></li>
+                                    <li><a class="dropdown-item" href="#">RU</a></li>
+                                    <li><a class="dropdown-item" href="#">ES</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="btn-wrapper mb-2 mb-lg-0 me-lg-3">
+                            <a href="#" class="btn btn-sign">Sign In</a>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="#" class="btn btn-add">List your property</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="sp-custom mb-4 mb-lg-5 py-4 py-lg-5">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb sp-breadcrumb">
+                        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a href="#" itemprop="item">
+                                <span itemprop="name">Home</span>
+                            </a>
+                            <meta itemprop="position" content="1" />
+                        </li>
+                        <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <a href="#" itemprop="item">
+                                <span itemprop="name">Developers</span>
+                            </a>
+                            <meta itemprop="position" content="2" />
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                            <span itemprop="name">{{ developer.developer_name }}</span>
+                            <meta itemprop="position" content="3" />
+                        </li>
+                    </ol>
+                </nav>
+                <div class="sp-custom__inner">
+                    <div class="sp-custom__header d-flex flex-column flex-sm-row align-items-sm-center justify-content-between mt-4 mb-3">
+                        <h1 class="heading-1 mb-2 mb-sm-0">{{ developer.developer_name }}</h1>
+                        <div class="sp-tags">
+                            <div class="sp-tag">{{ developer.project_count }} Projects</div>
+                            <div class="sp-tag">{{ developer.total_no_of_units }} Units</div>
+                            <a href="#" class="sp-tag">
+                                <i class="fa fa-solid fa-share"></i>
+                                Share
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sp-custom__info">
+                        <div class="sp-custom__info-video">
+                            <iframe src="{{ developer.video }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                        <h2 class="heading-2 mb-2">{{ description_main }}</h2>
+                        {% for text in description_text %}
+                            <p>{{ text }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-projects mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
+                    <h2 class="heading-2 mb-3 mb-lg-0">Compare all projects from {{ developer.developer_name }}</h2>
+                    <div class="sp-pills-wrapper">
+                        <ul class="nav nav-pills sp-pills" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="pills-complete-tab" data-bs-toggle="pill" data-bs-target="#pills-complete" type="button" role="tab" aria-controls="pills-complete" aria-selected="true">Completed {{ len_projects_completion_date }}</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="pills-off-tab" data-bs-toggle="pill" data-bs-target="#pills-off" type="button" role="tab" aria-controls="pills-off" aria-selected="false">Off Plan {{ len_projects_off_plan }}</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-complete" role="tabpanel" aria-labelledby="pills-complete-tab">                        
+                        <div class="table-responsive sp-table-wrapper p-0">
+                            <table class="table table-striped sp-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Project Name</th>
+                                        <th scope="col">Region</th>
+                                        <th scope="col">Total Number Of Units</th>
+                                        <th scope="col">Starting Price</th>
+                                        <th scope="col">Completion Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for p in projects_completion_date %}
+                                        <tr>
+                                            <th scope="row">{{ p.project_name }}</th>
+                                            <td>{{ p.location }}</td>
+                                            <td>{{ p.units_num }}</td>
+                                            <td>{{ p.starting_price }}</td>
+                                            <td>{{ p.completion_date }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-off" role="tabpanel" aria-labelledby="pills-off-tab">                       
+                        <div class="table-responsive sp-table-wrapper p-0">
+                            <table class="table table-striped sp-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Project Name</th>
+                                        <th scope="col">Region</th>
+                                        <th scope="col">Total Number Of Units</th>
+                                        <th scope="col">Starting Price</th>
+                                        <th scope="col">Completion Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for p in projects_off_plan %}
+                                        <tr>
+                                            <th scope="row">{{ p.project_name }}</th>
+                                            <td>{{ p.location }}</td>
+                                            <td>{{ p.units_num }}</td>
+                                            <td>{{ p.starting_price }}</td>
+                                            <td>{{ p.off_plan }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sp-footer py-3 mt-4">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Thailand
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                        <li><a class="dropdown-item" href="#">Nepal</a></li>
+                        <li><a class="dropdown-item" href="#">India</a></li>
+                        <li><a class="dropdown-item" href="#">China</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Buy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Rent</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sell</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Projects</a></li>
+            </ul>
+            <div class="d-flex flex-column flex-sm-row justify-content-between">
+                <ul class="nav justify-content-center justify-content-sm-start">
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Privacy</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Press</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Careers</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Sitemap</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Virtual Real Estate</a></li>
+                </ul>
+                <p class="text-center">© 2023 <a href="#">bangkok-condos-for-sale.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

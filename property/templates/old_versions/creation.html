@@ -1,0 +1,1707 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'property/css/style.css' %}">
+    <title>Title</title>
+</head>
+
+<style>
+
+.frame {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+.container_plus_minus {
+	display: flex;
+	background: var(--sp-green);
+	border-radius: 10rem;
+	width: 60%;
+	padding: 3px;
+}
+
+.style_h1_plus_minus {
+	margin: 0;
+	padding: 0;
+	user-select: none;
+	font-size: 18px;
+	color: white;
+}
+
+.col > button, .number {
+	width: 100%;
+	background: var(--sp-green);
+	border: 0px;
+	text-align: center;
+	color: white;
+	margin: auto;
+}
+
+.button_plus_minus {
+	color: white;
+	padding: 10px;
+}
+
+
+a:hover {
+    color: white;
+}
+
+.pad{
+    padding: 10px 0px;
+}
+
+.buttons_back_next_hr {
+    position: absolute;
+    bottom: 10px;
+    width: 450px;
+}
+
+
+.buttons_back_next {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons_next {
+    text-align: right;
+}
+
+.form-check-input:checked {
+    background-color: var(--sp-green);
+    border-color: var(--sp-green);
+}
+
+.inputDate {
+        /* Загальні стилі для input */
+        padding: 4px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+    }
+
+.inputDate[type="date"] {
+        /* Змінюємо вигляд спливаючого календаря */
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        /* Встановлюємо спеціальний курсор для поля дати */
+        cursor: pointer;
+        /* Змінюємо фоновий колір і курсор при наведенні */
+        background-color: #f8f8f8;
+    }
+
+.inputDate[type="date"]::-webkit-calendar-picker-indicator {
+        /* Змінюємо вигляд кнопки вибору дати */
+        background: transparent;
+        padding: 0;
+        margin: 0;
+        /* Встановлюємо спеціальний курсор для кнопки */
+        cursor: pointer;
+        /* Встановлюємо власне зображення для кнопки */
+        background-image: url('calendar-icon.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        /* Розмір зображення кнопки */
+        width: 24px;
+        height: 24px;
+        /* Ховаємо текстову мітку "Choose date" */
+        color: transparent;
+    }
+#map {
+            height: 400px;
+            margin-bottom: 20px;
+        }
+
+.image-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.file-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-button input {
+    display: none;
+}
+
+.image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.img-container {
+    position: relative;
+}
+
+.image img {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+
+</style>
+
+<body>
+    <header class="sp-header py-1">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand d-inline-block me-4" href="#">
+                    Logo
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+                    id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink1"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Buy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Rent
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Sell
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                        <ul class="navbar-nav me-lg-2">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    AED
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink1">
+                                    <li><a class="dropdown-item" href="#">THB</a></li>
+                                    <li><a class="dropdown-item" href="#">ARS</a></li>
+                                    <li><a class="dropdown-item" href="#">AUD</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    EN
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink2">
+                                    <li><a class="dropdown-item" href="#">UA</a></li>
+                                    <li><a class="dropdown-item" href="#">RU</a></li>
+                                    <li><a class="dropdown-item" href="#">ES</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="btn-wrapper mb-2 mb-lg-0 me-lg-3">
+                            <a href="#" class="btn btn-sign">Sign In</a>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="#" class="btn btn-add">List your property</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+<main>
+    <section>
+        <div class="container">
+            <div style="display: flex; align-items: flex-start; justify-content: space-between">
+                <div style="width: 50%; margin: 20px">
+                    <div style="width: 450px; margin-left: auto;">
+
+                        <form id="myForm" method="post" action="{% url 'creation' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <input type="hidden" id="form_num" name="form_num" value="{{ form_num }}">
+
+
+                            <div id="startId">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">List on FazWaz for free, auto-publish on 7 top Thai real estate portals</h2>
+                                <p><small>Let's get the basic details about your property so you can publish your listing.</small></p>
+
+                                <div class="pad">
+                                    <p><strong>STEP 1</strong></p>
+                                    <p><strong>Provide the basics</strong></p>
+                                    <p><small>Basics, Location, Property Size, Details, Ownership, Features</small></p>
+                                    <div class="pad">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum(event)">Let's start</button>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="pad">
+                                    <p><strong>STEP 2</strong></p>
+                                    <p><strong>Make your listing stand out</strong></p>
+                                    <p><small>Photos, Floor Plan, Description</small></p>
+                                    <div class="pad">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum1step2(event)">Continue</button>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="pad">
+                                    <p><strong>STEP 3</strong></p>
+                                    <p><strong>Set the price and get ready for viewings</strong></p>
+                                    <p><small>Status, Pricing, Access Person</small></p>
+                                    <div class="pad">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum1step3(event)">Continue</button>
+                                    </div>
+                                </div>
+
+
+                                <div id="dialog-wrapper" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9998;">
+                                    <div id="dialog" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 4px; z-index: 9999; width: 350px;">
+                                        <p><strong>Please provide the following details to publish your listing</strong></p>
+                                        <div id="messages-container-phone" style="display: none">
+                                            <ul class="list-unstyled alert alert-danger">
+                                                 <li>Field is mandatory.</li>
+                                            </ul>
+                                        </div>
+                                        <input type="text" id="phone" name="NextId3step3Year" placeholder="Phone" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+
+                                        <div id="messages-container-i_am" style="display: none">
+                                            <ul class="list-unstyled alert alert-danger">
+                                                 <li>Make a choice.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="pad sp-home__form-col col-lg-3 col-sm-12">
+                                            <div class="form-group">
+                                                <div class="simple-input" style="width: 300px;">
+                                                    <select id="i_am" name="i_am" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                        <option value="" selected disabled>I am a ...</option>
+                                                        <option value="Developer">Developer</option>
+                                                        <option value="Agent">Agent</option>
+                                                        <option value="Buyer">Buyer</option>
+                                                        <option value="Seller">Seller</option>
+                                                        <option value="Renter">Renter</option>
+                                                        <option value="Landlord">Landlord</option>
+                                                        <option value="Other/Just Looking">Other/Just Looking</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn sp-condos__btn" onclick="showWarningMain(event)" style="width: 300px">Submit</button>
+                                    </div>
+                                </div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                        ㅤ
+                                      <div class="buttons_next">
+                                          <button type="button" class="btn sp-condos__btn" onclick="showDialog(event)">Submit</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="NextId1" style="display: none; height: 90vh;">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">Let's start with the basics</h2>
+                                <p><strong>Are you looking to sell or rent your property?</strong></p>
+
+                                <div id="messages-container-propertyType" style="display: none">
+                                    <ul class="list-unstyled alert alert-danger">
+                                         <li>Please choose whether you want to sell or rent your property?</li>
+                                    </ul>
+                                </div>
+
+                                <div class="pad">
+                                    <input type="radio" id="sellOption" name="propertyType" value="sell">
+                                    <label for="sellOption">Sell</label>
+                                    <label for="sellOption"><small>(I am only interested in selling my property)</small></label>
+                                </div>
+
+                                <div class="pad">
+                                    <input type="radio" id="rentOption" name="propertyType" value="rent">
+                                    <label for="rentOption">Rent</label>
+                                    <label for="rentOption"><small>(I am only interested in renting out my property)</small></label>
+                                </div>
+
+                                <div class="pad">
+                                    <input type="radio" id="bothOption" name="propertyType" value="both">
+                                    <label for="bothOption">Both Sell & Rent</label>
+                                    <label for="bothOption"><small>(I want to sell my property but am open to renting it out in the meantime)</small></label>
+                                </div>
+
+                                <div class="pad">
+                                    <p><strong>What type of property are you listing?</strong></p>
+                                </div>
+
+                                <div id="messages-container-ptypes" style="display: none">
+                                    <ul class="list-unstyled alert alert-danger">
+                                         <li>Please select a property type.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="pad sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group">
+                                        <div class="simple-input" style="width: 300px;">
+                                            <select id="ptypes" name="ptypes" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                <option value="" selected disabled>Property Types</option>
+                                                <option value="1">House</option>
+                                                <option value="2">Villa</option>
+                                                <option value="3">Condo</option>
+                                                <option value="4">Apartment</option>
+                                                <option value="5">Townhouse</option>
+                                                <option value="6">Land</option>
+                                                <option value="7">Shophouse</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pad" id="NextId1IsName" style="display: none">
+                                    <p><strong id="NextId1Label1"></strong></p>
+                                    <div id="messages-container-IsName" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                             <li>Please make a choice.</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="yesOption" name="IsName" value="yes">
+                                        <label for="yesOption">Yes</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="noOption" name="IsName" value="no">
+                                        <label for="noOption">No</label>
+                                    </div>
+                                </div>
+
+                                <div class="pad" id="NextId1EnterName" style="display: none">
+                                    <p><strong id="NextId1Label2"></strong></p>
+                                    <div id="messages-container-NextId1Name" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                             <li>Please enter the development name.</li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" id="NextId1Name" name="NextId1Name" placeholder="Enter the development name" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                </div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                        ㅤ
+                                      <div class="buttons_next">
+                                          <input type="hidden" id="projectNames" value="{{ project_names|join:',' }}">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum1(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId2" style="display: none; height: 90vh;">
+
+                                <h2 class="heading-2 mb-3 mb-lg-0">Please provide the location details</h2>
+                                <p><strong>Where is your property located?</strong></p>
+
+                                <div class="pad sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group" style="width: 400px;">
+                                        <p><strong>Region:</strong></p>
+                                        <div id="messages-container-region" style="display: none">
+                                            <ul class="list-unstyled alert alert-danger">
+                                                 <li>Please select a region.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="simple-input" style="width: 300px;">
+                                            <select id="region" name="region" class="form-control" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                              <option value="" selected disabled>Select Region</option>
+                                              <option value="Bangkok">Bangkok</option>
+                                              <option value="Test">Test</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pad sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group" style="width: 400px;">
+                                        <p><strong>Location:</strong></p>
+                                        <div id="messages-container-location" style="display: none">
+                                            <ul class="list-unstyled alert alert-danger">
+                                                 <li>Please select a location.</li>
+                                            </ul>
+                                        </div>
+                                        <div class="simple-input" style="width: 300px">
+                                            <select id="location" name="location" class="form-control" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px; display: block">
+                                              <option value="" selected disabled>Select Location</option>
+                                            </select>
+
+                                            <select id="locationBangkok" class="form-control" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px; display: none">
+                                              <option value="" selected disabled>Select Location</option>
+                                              <option value="Bang Bon">Bang Bon</option>
+                                              <option value="Bang Kapi">Bang Kapi</option>
+                                              <option value="Bangkok Noi">Bangkok Noi</option>
+                                              <option value="Bangkok Yai">Bangkok Yai</option>
+                                              <option value="Bang Khae">Bang Khae</option>
+                                              <option value="Bang Khen">Bang Khen</option>
+                                              <option value="Bang Khloem">Bang Khloem</option>
+                                              <option value="Bang Khun Thian">Bang Khun Thian</option>
+                                              <option value="Bang Na">Bang Na</option>
+                                              <option value="Bang Phlat">Bang Phlat</option>
+                                              <option value="Bang Rak">Bang Rak</option>
+                                              <option value="Bang Sue">Bang Sue</option>
+                                              <option value="Bueng Kum">Bueng Kum</option>
+                                              <option value="Wang Thonglang">Wang Thonglang</option>
+                                              <option value="Watthana">Watthana</option>
+                                              <option value="Din Daeng">Din Daeng</option>
+                                              <option value="Don Mueang">Don Mueang</option>
+                                              <option value="Dusit">Dusit</option>
+                                              <option value="Khan Na Yao">Khan Na Yao</option>
+                                              <option value="Khlong Sam Wa">Khlong Sam Wa</option>
+                                              <option value="Khlong San">Khlong San</option>
+                                              <option value="Khlong Toei">Khlong Toei</option>
+                                              <option value="Lak Si">Lak Si</option>
+                                              <option value="Lat Krabang">Lat Krabang</option>
+                                              <option value="Lat Phrao">Lat Phrao</option>
+                                              <option value="Min Buri">Min Buri</option>
+                                              <option value="Nong Khaem">Nong Khaem</option>
+                                              <option value="Nong Chok">Nong Chok</option>
+                                              <option value="Pathum Wan">Pathum Wan</option>
+                                              <option value="Pom Prap Sattru Phai">Pom Prap Sattru Phai</option>
+                                              <option value="Prawet">Prawet</option>
+                                              <option value="Phasi Charoen">Phasi Charoen</option>
+                                              <option value="Phaya Thai">Phaya Thai</option>
+                                              <option value="Phra Khanong">Phra Khanong</option>
+                                              <option value="Phra Nakhon">Phra Nakhon</option>
+                                              <option value="Rat Burana">Rat Burana</option>
+                                              <option value="Ratchathewi">Ratchathewi</option>
+                                              <option value="Sai Mai">Sai Mai</option>
+                                              <option value="Samphanthawong">Samphanthawong</option>
+                                              <option value="Saphan Sung">Saphan Sung</option>
+                                              <option value="Sathon">Sathon</option>
+                                              <option value="Suan Luang">Suan Luang</option>
+                                              <option value="Taling Chan">Taling Chan</option>
+                                              <option value="Thawi Watthana">Thawi Watthana</option>
+                                              <option value="Thon Buri">Thon Buri</option>
+                                              <option value="Thung Khru">Thung Khru</option>
+                                              <option value="Huai Khwang">Huai Khwang</option>
+                                              <option value="Chatuchak">Chatuchak</option>
+                                              <option value="Chom Thong">Chom Thong</option>
+                                              <option value="Yan Nawa">Yan Nawa</option>
+                                            </select>
+
+
+
+                                            <select id="locationTest" class="form-control" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px; display: none">
+                                              <option value="" selected disabled>Select Location</option>
+                                              <option value="Test 1">Test 1</option>
+                                              <option value="Test 2">Test 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pad">
+                                    <p><strong>Subdistrict:</strong></p>
+                                    <input type="text" id="subdistrict" name="subdistrict" placeholder="Enter the development name" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                </div>
+
+                                <div class="pad">
+                                    <p><strong>Street Address (Optional):</strong></p>
+                                    <input type="text" id="streetAddress" name="streetAddress" placeholder="Enter the development name" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                </div>
+
+                                <iframe
+                                    id="map"
+                                    width="450"
+                                    height="350"
+                                    style="border:0"
+                                    loading="lazy"
+                                    allowfullscreen
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBuNKhbP609Fb3jQassP8wqp9xdebMIT7w&q=New+York">
+                                </iframe>
+
+                                <div class="buttons_back_next_hr" style="position: inherit">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                      <button class="btn sp-condos__btn" onclick="decrementFormNum2(event)">Back2</button>
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum2(event)">Next2</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId3" style="display: none; height: 90vh;">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">How big is your property?</h2>
+
+                                <div class="pad" style="display: flex; align-items: flex-start; justify-content: space-between">
+                                    <div style="width: 100%">
+                                        <strong>Bedrooms</strong>
+                                    </div>
+
+                                    <div class="frame" style="width: 60%;">
+                                      <div class="center container container_plus_minus">
+                                            <div class="button col">
+                                                <a class="button_plus_minus" id="minus-btn-bed"><strong>-</strong></a>
+                                            </div>
+                                            <div class="number">
+                                                <h1 class="style_h1_plus_minus" id="count-bed" name="count-bed">0</h1>
+                                            </div>
+                                            <div class="button col">
+                                                <a class="button_plus_minus" id="plus-btn-bed"><strong>+</strong></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pad" style="display: flex; align-items: flex-start; justify-content: space-between">
+                                    <div style="width: 100%">
+                                        <strong>Bathrooms</strong>
+                                    </div>
+
+                                    <div class="frame" style="width: 60%;">
+                                      <div class="center container container_plus_minus">
+                                            <div class="button col">
+                                                <a class="button_plus_minus" id="minus-btn-bath"><strong>-</strong></a>
+                                            </div>
+                                            <div class="number">
+                                                <h1 class="style_h1_plus_minus" id="count-bath" name="count-bath">0</h1>
+                                            </div>
+                                            <div class="button col">
+                                                <a class="button_plus_minus" id="plus-btn-bath"><strong>+</strong></a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pad">
+                                    <div id="messages-container-propertySize" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                            <li>Please enter the indoor area size.</li>
+                                        </ul>
+                                    </div>
+                                    <p><strong>Indoor Area</strong>(SqM)</p>
+                                    <input type="text" name="NextId3propertySize" id="propertySize" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                    <p>All space between a floor and a ceiling that is covered by walls, doorways, or windows.</p>
+                                </div>
+
+                                <div class="pad" name="outdoor_area" id="outdoor_area" style="display: block">
+                                    <p><strong>Outdoor Area</strong>(SqM)</p>
+                                    <input type="text" name="NextId3outdoorAreaSize" id="outdoorAreaSize" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                    <p>Combined size of the terrace, pool, parking area, and sala. Do not include the size of the garden.</p>
+                                </div>
+
+                                <div class="pad" name="plot_size" id="plot_size" style="display: block">
+                                    <p><strong>Plot Size</strong>(SqM)</p>
+                                    <input type="text" name="NextId3landSize" id="landSize" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                    <p>A land plot is a parcel of land that has defined boundaries (or borders) and is registered with the local government.</p>
+                                </div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                      <button class="btn sp-condos__btn" onclick="decrementFormNum3(event)">Back</button>
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum3(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId4" style="display: none; height: 90vh;">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">Add more details</h2>
+
+                                <div name="select_storeys" id="select_storeys" style="display: block">
+                                    <p><strong>How many storeys does your property have?</strong></p>
+                                    <div class="pad sp-home__form-col col-lg-3 col-sm-12">
+                                        <div class="form-group">
+                                            <div class="simple-input" style="width: 300px;">
+                                                <select id="selectStoreys" name="selectStoreys" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                    <option value="" selected disabled>Select Storeys</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="date" name="date" style="display: block">
+                                    <p><strong>In what year was the construction of it completed?</strong></p>
+
+                                    <div class="pad sp-home__form-col col-sm-12">
+                                        <div class="form-group" style="display: flex;">
+                                            <div class="simple-input" style="flex: 1; margin-right: 10px;">
+                                                <select id="selectYear" name="selectYear" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                    <option value="" selected disabled>Select a year</option>
+                                                    <option value="2028">2028</option>
+                                                    <option value="2027">2027</option>
+                                                    <option value="2026">2026</option>
+                                                    <option value="2025">2025</option>
+                                                    <option value="2024">2024</option>
+                                                    <option value="2023">2023</option>
+                                                    <option value="2022">2022</option>
+                                                    <option value="2021">2021</option>
+                                                    <option value="2020">2020</option>
+                                                    <option value="2019">2019</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2013">2013</option>
+                                                    <option value="2012">2012</option>
+                                                    <option value="2011">2011</option>
+                                                    <option value="2010">2010</option>
+                                                    <option value="2009">2009</option>
+                                                    <option value="2008">2008</option>
+                                                    <option value="2007">2007</option>
+                                                    <option value="2006">2006</option>
+                                                    <option value="2005">2005</option>
+                                                    <option value="2004">2004</option>
+                                                    <option value="2003">2003</option>
+                                                    <option value="2002">2002</option>
+                                                    <option value="2001">2001</option>
+                                                    <option value="2000">2000</option>
+                                                    <option value="1999">1999</option>
+                                                    <option value="1998">1998</option>
+                                                    <option value="1997">1997</option>
+                                                    <option value="1996">1996</option>
+                                                    <option value="1995">1995</option>
+                                                    <option value="1994">1994</option>
+                                                    <option value="1993">1993</option>
+                                                    <option value="1992">1992</option>
+                                                    <option value="1991">1991</option>
+                                                    <option value="1990">1990</option>
+                                                    <option value="1989">1989</option>
+                                                    <option value="1988">1988</option>
+                                                    <option value="1987">1987</option>
+                                                    <option value="1986">1986</option>
+                                                    <option value="1985">1985</option>
+                                                    <option value="1984">1984</option>
+                                                    <option value="1983">1983</option>
+                                                    <option value="1982">1982</option>
+                                                    <option value="1981">1981</option>
+                                                    <option value="1980">1980</option>
+                                                    <option value="1979">1979</option>
+                                                    <option value="1978">1978</option>
+                                                    <option value="1977">1977</option>
+                                                    <option value="1976">1976</option>
+                                                    <option value="1975">1975</option>
+                                                    <option value="1974">1974</option>
+                                                    <option value="1973">1973</option>
+                                                    <option value="1972">1972</option>
+                                                    <option value="1971">1971</option>
+                                                    <option value="1970">1970</option>
+                                                </select>
+                                            </div>
+                                            <div class="simple-input" style="flex: 1;">
+                                                <select id="selectMounth" name="selectMounth" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                    <option value="" selected disabled>Select a month</option>
+                                                    <option value="01-January">01-January</option>
+                                                    <option value="02-February">02-February</option>
+                                                    <option value="03-March">03-March</option>
+                                                    <option value="04-April">04-April</option>
+                                                    <option value="05-May">05-May</option>
+                                                    <option value="06-June">06-June</option>
+                                                    <option value="07-July">07-July</option>
+                                                    <option value="08-August">08-August</option>
+                                                    <option value="09-September">09-September</option>
+                                                    <option value="10-October">10-October</option>
+                                                    <option value="11-November">11-November</option>
+                                                    <option value="12-December">12-December</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <p><strong>How is your property available?</strong></p>
+
+                                <div class="pad">
+                                    <div style="display: flex;">
+                                        <div style="flex: 1; margin-right: 10px;">
+                                            <div class="pad">
+                                                <input type="radio" id="unfurnished" name="furnishing" value="unfurnished">
+                                                <label for="sellOption">Unfurnished</label>
+                                            </div>
+
+                                            <div class="pad">
+                                                <input type="radio" id="fully_furnished" name="furnishing" value="fully_furnished">
+                                                <label for="rentOption">Fully Furnished</label>
+                                            </div>
+
+                                            <div class="pad">
+                                                <input type="radio" id="partly_furnished" name="furnishing" value="partly_furnished">
+                                                <label for="bothOption">Partly Furnished</label>
+                                            </div>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <div class="pad">
+                                                <input type="radio" id="bare_shell" name="furnishing" value="bare_shell">
+                                                <label for="sellOption">Bare Shell</label>
+                                            </div>
+
+                                            <div class="pad">
+                                                <input type="radio" id="negotiable" name="furnishing" value="negotiable">
+                                                <label for="rentOption">Negotiable</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <p><strong>How many private parking spots does it have?</strong></p>
+
+                                <div class="pad sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group">
+                                        <div class="simple-input" style="width: 300px;">
+                                            <select id="num_of_parking_spaces" name="num_of_parking_spaces" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                <option value="" selected disabled>Select Spaces</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <p><strong>How about pets, are they allowed?</strong></p>
+
+                                <div class="pad">
+                                    <div style="display: flex;">
+                                        <div style="flex: 1.5; margin-right: 10px;">
+                                            <div class="pad">
+                                                <input type="radio" id="yes_all_kinds" name="pets_allowed" value="pets allowed">
+                                                <label for="sellOption">Yes, all kind of pets allowed</label>
+                                            </div>
+
+                                            <div class="pad">
+                                                <input type="radio" id="cats_and_dogs_small_sized" name="pets_allowed" value="fully_furnished">
+                                                <label for="rentOption">Cats and dogs (small only)</label>
+                                            </div>
+
+                                            <div class="pad">
+                                                <input type="radio" id="cats_and_dogs_any_sized" name="pets_allowed" value="partly_furnished">
+                                                <label for="bothOption">Cats and dogs (any sized)</label>
+                                            </div>
+                                        </div>
+                                        <div style="flex: 1;">
+                                            <div class="pad">
+                                                <input type="radio" id="only_cats" name="pets_allowed" value="bare_shell">
+                                                <label for="sellOption">Only cats</label>
+                                            </div>
+
+                                            <div class="pad">
+                                                <input type="radio" id="only_dogs" name="pets_allowed" value="negotiable">
+                                                <label for="rentOption">Only dogs</label>
+                                            </div>
+
+                                            <div class="pad">
+                                                <input type="radio" id="no" name="pets_allowed" value="negotiable">
+                                                <label for="rentOption">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                      <button class="btn sp-condos__btn" onclick="decrementFormNum4(event)">Back</button>
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum4(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId5" style="display: none; height: 90vh;">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">How do you own this property?</h2>
+
+                                <p><strong>Building Ownership</strong></p>
+
+                                <div class="row pad">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="foreignOwnership" name="foreignOwnership">
+                                            <label class="form-check-label" for="foreignOwnership">Foreign Ownership</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="thaiOwnership" name="thaiOwnership">
+                                            <label class="form-check-label" for="thaiOwnership">Thai Ownership</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="leasehold" name="leasehold">
+                                            <label class="form-check-label" for="leasehold">Leasehold</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="company" name="company">
+                                            <label class="form-check-label" for="company">Company</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p><strong>Land Ownership</strong></p>
+                                <div class="row pad">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="company_land" name="company_land">
+                                            <label class="form-check-label" for="company">Company</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="thaiOwnership_land" name="thaiOwnership_land">
+                                            <label class="form-check-label" for="thaiOwnership">Thai Ownership</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="leasehold_land" name="leasehold_land">
+                                            <label class="form-check-label" for="leasehold">Leasehold</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p><strong>Land Title Deed</strong></p>
+                                <div class="pad sp-home__form-col col-lg-3 col-sm-12">
+                                    <div class="form-group">
+                                        <div class="simple-input" style="width: 300px;">
+                                            <select id="title_deed" name="title_deed" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                <option value="" selected disabled>Select land title</option>
+                                                <option value="chanote">Chanote</option>
+                                                <option value="Sor Kor 1">Sor Kor 1</option>
+                                                <option value="Sor Kor 2">Sor Kor 2</option>
+                                                <option value="Sor Kor 3">Sor Kor 3</option>
+                                                <option value="Sor Kor 3 Gor">Sor Kor 3 Gor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p><strong>When did you buy the property (Transfer date)?</strong></p>
+                                <div class="pad sp-home__form-col col-sm-12">
+                                    <div class="form-group" style="display: flex;">
+                                        <div class="simple-input" style="flex: 1; margin-right: 10px;">
+                                            <select id="buySelectYear" name="buySelectYear" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                <option value="" selected disabled>Select a year</option>
+                                                <option value="2028">2028</option>
+                                                <option value="2027">2027</option>
+                                                <option value="2026">2026</option>
+                                                <option value="2025">2025</option>
+                                                <option value="2024">2024</option>
+                                                <option value="2023">2023</option>
+                                                <option value="2022">2022</option>
+                                                <option value="2021">2021</option>
+                                                <option value="2020">2020</option>
+                                                <option value="2019">2019</option>
+                                                <option value="2018">2018</option>
+                                                <option value="2017">2017</option>
+                                                <option value="2016">2016</option>
+                                                <option value="2015">2015</option>
+                                                <option value="2014">2014</option>
+                                                <option value="2013">2013</option>
+                                                <option value="2012">2012</option>
+                                                <option value="2011">2011</option>
+                                                <option value="2010">2010</option>
+                                                <option value="2009">2009</option>
+                                                <option value="2008">2008</option>
+                                                <option value="2007">2007</option>
+                                                <option value="2006">2006</option>
+                                                <option value="2005">2005</option>
+                                                <option value="2004">2004</option>
+                                                <option value="2003">2003</option>
+                                                <option value="2002">2002</option>
+                                                <option value="2001">2001</option>
+                                                <option value="2000">2000</option>
+                                                <option value="1999">1999</option>
+                                                <option value="1998">1998</option>
+                                                <option value="1997">1997</option>
+                                                <option value="1996">1996</option>
+                                                <option value="1995">1995</option>
+                                                <option value="1994">1994</option>
+                                                <option value="1993">1993</option>
+                                                <option value="1992">1992</option>
+                                                <option value="1991">1991</option>
+                                                <option value="1990">1990</option>
+                                                <option value="1989">1989</option>
+                                                <option value="1988">1988</option>
+                                                <option value="1987">1987</option>
+                                                <option value="1986">1986</option>
+                                                <option value="1985">1985</option>
+                                                <option value="1984">1984</option>
+                                                <option value="1983">1983</option>
+                                                <option value="1982">1982</option>
+                                                <option value="1981">1981</option>
+                                                <option value="1980">1980</option>
+                                                <option value="1979">1979</option>
+                                                <option value="1978">1978</option>
+                                                <option value="1977">1977</option>
+                                                <option value="1976">1976</option>
+                                                <option value="1975">1975</option>
+                                                <option value="1974">1974</option>
+                                                <option value="1973">1973</option>
+                                                <option value="1972">1972</option>
+                                                <option value="1971">1971</option>
+                                                <option value="1970">1970</option>
+                                            </select>
+                                        </div>
+                                        <div class="simple-input" style="flex: 1;">
+                                            <select id="buySelectMounth" name="buySelectMounth" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+                                                <option value="" selected disabled>Select a month</option>
+                                                <option value="01-January">01-January</option>
+                                                <option value="02-February">02-February</option>
+                                                <option value="03-March">03-March</option>
+                                                <option value="04-April">04-April</option>
+                                                <option value="05-May">05-May</option>
+                                                <option value="06-June">06-June</option>
+                                                <option value="07-July">07-July</option>
+                                                <option value="08-August">08-August</option>
+                                                <option value="09-September">09-September</option>
+                                                <option value="10-October">10-October</option>
+                                                <option value="11-November">11-November</option>
+                                                <option value="12-December">12-December</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                      <button class="btn sp-condos__btn" onclick="decrementFormNum5(event)">Back</button>
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum5(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId6" style="display: none;">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">What are the features of your property?</h2>
+
+                                <p><strong>Property Features</strong></p>
+
+                                <div class="row pad">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="mediaRoomCinema" name="mediaRoomCinema">
+                                            <label class="form-check-label" for="mediaRoomCinema">Media Room/Cinema</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="privateGym" name="privateGym">
+                                            <label class="form-check-label" for="privateGym">Private Gym</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="privateLift" name="privateLift">
+                                            <label class="form-check-label" for="privateLift">Private Lift</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="privateSauna" name="privateSauna">
+                                            <label class="form-check-label" for="privateSauna">Private Sauna</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="jacuzzi" name="jacuzzi">
+                                            <label class="form-check-label" for="jacuzzi">Jacuzzi</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="bathtub" name="bathtub">
+                                            <label class="form-check-label" for="bathtub">Bathtub</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="fullyRenovated" name="fullyRenovated" onchange="toggleDatePicker('fullyRenovated')">
+                                            <label class="form-check-label" for="fullyRenovated">Fully Renovated</label>
+                                            <input class="inputDate" type="date" id="dateFullyRenovated" name="dateFullyRenovated" style="display: none">
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="cornerUnit" name="cornerUnit">
+                                            <label class="form-check-label" for="cornerUnit">Corner Unit</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="maidsQuarters" name="maidsQuarters">
+                                            <label class="form-check-label" for="maidsQuarters">Maids Quarters</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="duplex" name="duplex">
+                                            <label class="form-check-label" for="duplex">Duplex</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="balcony" name="balcony">
+                                            <label class="form-check-label" for="balcony">Balcony</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="fullWesternKitchen" name="fullWesternKitchen">
+                                            <label class="form-check-label" for="fullWesternKitchen">Full Western Kitchen</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="renovatedKitchen" name="renovatedKitchen" onchange="toggleDatePicker('renovatedKitchen')">
+                                            <label class="form-check-label" for="renovatedKitchen">Renovated Kitchen</label>
+                                            <input class="inputDate" type="date" id="dateRenovatedKitchen" name="dateRenovatedKitchen" style="display: none">
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="renovatedBathroom" name="renovatedBathroom" onchange="toggleDatePicker('renovatedBathroom')">
+                                            <label class="form-check-label" for="renovatedBathroom">Renovated Bathroom</label>
+                                            <input class="inputDate" type="date" id="dateRenovatedBathroom" name="dateRenovatedBathroom" style="display: none">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <p><strong>Outdoor Features</strong></p>
+                                <div class="row pad">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="privatePool" name="privatePool">
+                                            <label class="form-check-label" for="privatePool">Private Pool</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="poolAccess" name="poolAccess">
+                                            <label class="form-check-label" for="poolAccess">Pool Access</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="rooftopTerrace" name="rooftopTerrace">
+                                            <label class="form-check-label" for="rooftopTerrace">Rooftop Terrace</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="privateGarden" name="privateGarden">
+                                            <label class="form-check-label" for="privateGarden">Private Garden</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gardenAccess" name="gardenAccess">
+                                            <label class="form-check-label" for="gardenAccess">Garden Access</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="terrace" name="terrace">
+                                            <label class="form-check-label" for="terrace">Terrace</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="coveredParking" name="coveredParking">
+                                            <label class="form-check-label" for="coveredParking">Covered Parking</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="outdoorShowers" name="outdoorShowers">
+                                            <label class="form-check-label" for="outdoorShowers">Outdoor Showers</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p><strong>Rental Features</strong></p>
+                                <div class="row pad">
+                                  <div class="col">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="wifiIncluded">
+                                      <label class="form-check-label" for="wifiIncluded">Wifi Included</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="washingMachine">
+                                      <label class="form-check-label" for="washingMachine">Washing Machine</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="microwave">
+                                      <label class="form-check-label" for="microwave">Microwave</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="oven">
+                                      <label class="form-check-label" for="oven">Oven</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="poolCleaningIncluded">
+                                      <label class="form-check-label" for="oven">Pool Cleaning Included</label>
+                                    </div>
+                                  </div>
+
+                                  <div class="col">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="tv">
+                                      <label class="form-check-label" for="tv">TV</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="cableTv">
+                                      <label class="form-check-label" for="cableTv">Cable TV</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="truevision">
+                                      <label class="form-check-label" for="truevision">Truevision</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="gardeningIncluded">
+                                      <label class="form-check-label" for="gardeningIncluded">Gardening Included</label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <p><strong>Location Features</strong></p>
+                                <div class="row pad">
+                                  <div class="col">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="beachfront" name="beachfront">
+                                      <label class="form-check-label" for="beachfront">Beachfront</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="beachAccess" name="beachAccess">
+                                      <label class="form-check-label" for="beachAccess">Beach Access</label>
+                                    </div>
+                                  </div>
+
+                                  <div class="col">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="oceanfront" name="oceanfront">
+                                      <label class="form-check-label" for="oceanfront">Oceanfront</label>
+                                    </div>
+
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" id="oceanAccess" name="oceanAccess">
+                                      <label class="form-check-label" for="oceanAccess">Ocean Access</label>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">What are the views of your property?</h2>
+                                <div class="row pad">
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="blockedView" name="blockedView">
+                                            <label class="form-check-label" for="blockedView">Blocked View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="unblockedOpenView" name="unblockedOpenView">
+                                            <label class="form-check-label" for="unblockedOpenView">Unblocked Open View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="cityView" name="cityView">
+                                            <label class="form-check-label" for="cityView">City View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="riverCanalView" name="riverCanalView">
+                                            <label class="form-check-label" for="riverCanalView">River or Canal View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="poolView" name="poolView">
+                                            <label class="form-check-label" for="poolView">Pool View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="gardenView" name="gardenView">
+                                            <label class="form-check-label" for="gardenView">Garden View</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="parkView" name="parkView">
+                                            <label class="form-check-label" for="parkView">Park View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="seaView" name="seaView">
+                                            <label class="form-check-label" for="seaView">Sea View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="partialSeaView" name="partialSeaView">
+                                            <label class="form-check-label" for="partialSeaView">Partial Sea View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="lakeView" name="lakeView">
+                                            <label class="form-check-label" for="lakeView">Lake View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="mountainView" name="mountainView">
+                                            <label class="form-check-label" for="mountainView">Mountain View</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="golfCourseView" name="golfCourseView">
+                                            <label class="form-check-label" for="golfCourseView">Golf Course View</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="pad"><hr></div>
+                                <div class="pad buttons_back_next">
+                                  <button class="btn sp-condos__btn" onclick="decrementFormNum6(event)">Back</button>
+                                  <div class="buttons_next">
+                                    <button class="btn sp-condos__btn" onclick="incrementFormNum6(event)">Next</button>
+                                  </div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="NextId1step2" style="display: none; height: 90vh;">
+
+                                <h2 class="heading-2 mb-3 mb-lg-0 pad">Make your listing stand out to buyers</h2>
+                                <p class="pad">Generate up to 50% more interest by adding at least 6 high quality photos of your property</p>
+
+                                <p><small><strong>The first photo will appear in the search results as your featured image</strong></small></p>
+
+                                <div class="row pad">
+                                    <div class="image-container col">
+                                        <label class="file-button btn sp-condos__btn">
+                                            Add Main
+                                            <input name="choseImagesMain" type="file" class="file" accept="image/png, image/jpeg, image/jpg" onchange="previewImage(event)">
+                                        </label>
+                                    </div>
+
+                                    <div id="image-preview" class="image col"></div>
+                                </div>
+
+                                <hr>
+                                <div class="pad"></div>
+
+                                <div id="images-container"></div>
+
+                                <div style="width: 450px; padding: 30px 0px 0px 0px;">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                        ㅤ
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum2step2(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId2step2" style="display: none; height: 90vh;">
+
+                                <h2 class="heading-2 mb-3 mb-lg-0 pad">Upload the floor plan of your property</h2>
+                                <p class="pad">Give prospective buyers or tenants an idea of the layout of your property even before visiting it. On average properties with floor plans receive 20% more inquiries.</p>
+
+                                <div id="images-plan-container"></div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                      <button class="btn sp-condos__btn" onclick="decrementFormNum3step2(event)">Back</button>
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum3step2(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId3step2" style="display: none; height: 90vh;">
+
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">Describe your rental property</h2>
+                                <p>Enter a listing title and description for your rental listing below. These details will appear only on the rental listing, and will not be shown on the sales listing.</p>
+
+                                <div class="pad">
+                                    <p><strong>Rental Listing Title</strong></p>
+                                    <input type="text" id="NextId3step2Listing" name="NextId3step2Listing" placeholder="Let renters know what makes your place special" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                </div>
+
+                                <div class="pad">
+                                    <p><strong>Rental Description</strong></p>
+                                    <input type="text" id="NextId3step2Description" name="NextId3step2Description" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px; height: 250px;">
+                                </div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                      <button class="btn sp-condos__btn" onclick="decrementFormNum4step2(event)">Back</button>
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum4step2(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div id="NextId1step3" style="display: none; height: 90vh;">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">What is the current status of your property?</h2>
+
+                                <div id="for_sale" style="display: block">
+
+                                    <div id="messages-container-forSaleAfterThisDate" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                            <li>Please select an option.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="forSaleUnoccupied" name="forSale" value="forSaleUnoccupied" onchange="toggleDatePicker('forSaleWithRentalTenant')">
+                                        <label for="forSaleUnoccupied">For sale unoccupied</label>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="forSaleOwnerOccupied" name="forSale" value="forSaleOwnerOccupied" onchange="toggleDatePicker('forSaleWithRentalTenant')">
+                                        <label for="forSaleOwnerOccupied">For sale owner occupied</label>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="forSaleWithRentalTenant" name="forSale" value="forSaleWithRentalTenant" onchange="toggleDatePicker('forSaleWithRentalTenant')">
+                                        <label for="forSaleWithRentalTenant">For sale with rental tenant</label>
+
+                                        <input class="inputDate" type="date" id="dateForSaleWithRentalTenant" name="dateForSaleWithRentalTenant" style="display: none">
+                                    </div>
+
+                                </div>
+
+                                <div id="for_rent" style="display: none">
+                                    <p><strong>Rental Status</strong></p>
+
+                                    <div id="messages-container-availableAfterThisDate" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                            <li>Please select an option.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="availableImmediately" name="available" value="availableImmediately" onchange="toggleDatePicker('availableAfterThisDate')">
+                                        <label for="availableImmediately">Available Immediately</label>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="availableAfterThisDate" name="available" value="availableAfterThisDate" onchange="toggleDatePicker('availableAfterThisDate')">
+                                        <label for="availableAfterThisDate">Available after this date</label>
+                                        <div id="messages-container-dateAvailable" style="display: none">
+                                            <ul class="list-unstyled alert alert-danger">
+                                                 <li>Please enter the date from which your property is available.</li>
+                                            </ul>
+                                        </div>
+                                        <input class="inputDate" type="date" id="dateAvailableAfterThisDate" name="dateAvailableAfterThisDate" style="display: none">
+                                    </div>
+
+                                    <div id="rentalDuration" class="pad" style="display: none">
+
+                                        <p><strong>What's the minimum rental duration?</strong></p>
+
+                                        <div id="messages-container-rentalDuration" style="display: none">
+                                            <ul class="list-unstyled alert alert-danger">
+                                                 <li>Please select an option.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="pad">
+                                            <input type="radio" id="month" name="rentalDuration" value="month">
+                                            <label for="month">Month to month</label>
+                                        </div>
+
+                                        <div class="pad">
+                                            <input type="radio" id="3_6Months" name="rentalDuration" value="3_6Months">
+                                            <label for="3_6Months">3 to 6 months</label>
+                                        </div>
+
+                                        <div class="pad">
+                                            <input type="radio" id="year" name="rentalDuration" value="year">
+                                            <label for="year">At least one year</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                        ㅤ
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum2step3(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId2step3" style="display: none; height: 90vh;">
+                                <h2 class="pad heading-2 mb-3 mb-lg-0">Set the price for your property</h2>
+
+                                <div class="pad" id="div-sales_price" style="display: none">
+                                    <p><strong>Sales Price</strong></p>
+                                    <p><strong>Yearly Contract</strong></p>
+                                    <div id="messages-container-sales_price" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                             <li>The field is required.</li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" id="sales_price" name="sales_price"  style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;"> AED
+                                </div>
+
+
+
+
+                                <div class="pad" id="div-NextId3step3Year" style="display: none">
+                                    <p><strong>Monthly Rent</strong></p>
+                                    <p><strong>Yearly Contract</strong></p>
+                                    <div id="messages-container-NextId3step3Year" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                             <li>The field is required.</li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" id="NextId3step3Year" name="NextId3step3Year"  style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;"> AED
+                                </div>
+
+                                <div class="pad" id="div-NextId3step3Listing3_6Month" style="display: none">
+                                    <p><strong>3 - 6 Month Contract</strong></p>
+                                    <div id="messages-container-NextId3step3Listing3_6Month" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                             <li>The field is required.</li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" id="NextId3step3Listing3_6Month" name="NextId3step3Listing3_6Month" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;"> AED
+                                </div>
+
+                                <div class="pad" id="div-NextId3step3ListingMonth" style="display: none">
+                                    <p><strong>Monthly Contract</strong></p>
+                                    <div id="messages-container-NextId3step3ListingMonth" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                             <li>The field is required.</li>
+                                        </ul>
+                                    </div>
+                                    <input type="text" id="NextId3step3ListingMonth" name="NextId3step3ListingMonth" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;"> AED
+                                </div>
+
+                                <div class="buttons_back_next_hr">
+                                    <hr>
+                                    <div class="buttons_back_next">
+                                        <button class="btn sp-condos__btn" onclick="decrementFormNum2step3(event)">Back</button>
+                                      <div class="buttons_next">
+                                        <button class="btn sp-condos__btn" onclick="incrementFormNum3step3(event)">Next</button>
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="NextId3step3" style="display: none; height: 90vh;">
+
+                                    <h2 class="pad heading-2 mb-3 mb-lg-0">For Viewings, where can we collect the keys?</h2>
+
+                                    <div id="messages-container-keys" style="display: none">
+                                        <ul class="list-unstyled alert alert-danger">
+                                             <li>Please select an option.</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="keys_1" name="keys" value="keys_1">
+                                        <label for="keys_1">At the juristic office</label>
+                                    </div>
+
+                                    <div id="key_1" style="display: none">
+                                        <div class="pad">
+                                            <input type="text" id="key_1_first_name" name="key_1_first_name" placeholder="First & middle name" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <div class="pad">
+                                            <input type="text" id="key_1_last_name" name="key_1_last_name" placeholder="Last name" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <div class="pad">
+                                            <input type="text" id="key_1_phone" name="key_1_phone" placeholder="Phone" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <div class="pad">
+                                            <input type="text" id="key_1_email" name="key_1_email" placeholder="Email" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <p><strong>Message</strong></p>
+                                        <div class="pad">
+                                            <input type="text" id="key_1_message" name="key_1_message" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px; height: 150px">
+                                        </div>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="keys_2" name="keys" value="keys_2">
+                                        <label for="keys_2">From the tenant</label>
+                                    </div>
+
+                                    <div id="key_2" style="display: none">
+                                        <div class="pad">
+                                            <input type="text" id="key_2_first_name" name="key_2_first_name" placeholder="First & middle name" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <div class="pad">
+                                            <input type="text" id="key_2_last_name" name="key_2_last_name" placeholder="Last name" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <div class="pad">
+                                            <input type="text" id="key_2_phone" name="key_2_phone" placeholder="Phone" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <div class="pad">
+                                            <input type="text" id="key_2_email" name="key_2_email" placeholder="Email" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+                                        </div>
+                                        <p><strong>Message</strong></p>
+                                        <div class="pad">
+                                            <input type="text" id="key_2_message" name="key_2_message" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px; height: 150px">
+                                        </div>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="keys_3" name="keys" value="keys_3">
+                                        <label for="keys_3">From me, the owner</label>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="keys_4" name="keys" value="keys_4">
+                                        <label for="keys_4">No keys</label>
+                                        <label for="keys_4"><small>(the property is under construction and not handed over yet)</small></label>
+                                    </div>
+
+                                    <div class="pad">
+                                        <input type="radio" id="keys_5" name="keys" value="keys_5">
+                                        <label for="keys_5">Other</label>
+                                    </div>
+
+                                    <div id="key_5" style="display: none">
+                                        <p><strong>Message</strong></p>
+                                        <div class="pad">
+                                            <input type="text" id="key_5_message" name="key_5_message" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 300px; height: 150px">
+                                        </div>
+                                    </div>
+
+                                    <div class="buttons_back_next_hr" style="position: inherit;">
+                                        <hr>
+                                        <div class="buttons_back_next">
+                                            <button class="btn sp-condos__btn" onclick="decrementFormNum3step3(event)">Back</button>
+                                          <div class="buttons_next">
+                                            <button class="btn sp-condos__btn" onclick="incrementFormNum4step3(event)">Next</button>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div style="flex-grow: 1">
+                    <img src="/media/img/sold_famaly.jpeg" style="width: 100%">
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<script src="{% static 'property/js/creation.js' %}"></script>
+
+
+</body>
+
+</html>

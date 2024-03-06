@@ -1,0 +1,136 @@
+{% extends "agent/base.html" %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+            }
+
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .input-group {
+                margin-bottom: 10px;
+            }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .input-group input {
+                width: 90%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+            .input-group button {
+                padding: 10px 20px;
+                background-color: #4caf50;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+            <div class="container" style="max-width: 90%;">
+                <h1>Overviews</h1>
+
+                <div class="table-responsive sp-table-wrapper">
+                        <table class="table table-striped sp-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Overview</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for overview in page_obj %}
+                                        <tr>
+                                            <th scope="row">{{ overview.name_overview }}</th>
+                                        </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                </div>
+
+                <div style="margin: 10px;">
+                    <p class="text-center mt-4">Showing {{ first_index }} - {{ last_index }} of {{ len_developers }} Results</p>
+                        <nav class="d-flex justify-content-center mt-4" aria-label="Page navigation">
+                            <ul class="sp-pagination d-flex align-items-center">
+                                <!-- Попередній елемент -->
+                                <li class="sp-pagination__item">
+                                    {% if page_obj.has_previous %}
+                                    <a class="sp-pagination__link arrow-prev" href="?page={{ page_obj.previous_page_number }}">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                    {% endif %}
+                                </li>
+
+                                <!-- Перша сторінка -->
+                                {% if page_obj.number > 2 %}
+                                <li class="sp-pagination__item">
+                                    <a class="sp-pagination__link {% if page_obj.number == 1 %}active{% endif %}" href="?page=1">1</a>
+                                </li>
+                                {% endif %}
+
+                                <!-- Елементи пагінації -->
+                                {% if page_obj.number > 3 %}
+                                    <li class="sp-pagination__item">
+                                        <a class="sp-pagination__link borderless" href="#">...</a>
+                                    </li>
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if num > page_obj.number|add:-2 and num < page_obj.number|add:2 %}
+                                        <li class="sp-pagination__item">
+                                            <a class="sp-pagination__link {% if page_obj.number == num %}active{% endif %}" href="?page={{ num }}">{{ num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.number < page_obj.paginator.num_pages|add:-2 %}
+                                    <li class="sp-pagination__item">
+                                        <a class="sp-pagination__link borderless" href="#">...</a>
+                                    </li>
+                                {% endif %}
+
+                                {% if page_obj.paginator.num_pages > page_obj.number|add:1  %}
+                                    <li class="sp-pagination__item">
+                                        <a class="sp-pagination__link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                    </li>
+                                {% endif %}
+
+                                <!-- Наступний елемент -->
+                                <li class="sp-pagination__item">
+                                    {% if page_obj.has_next %}
+                                    <a class="sp-pagination__link arrow-next" href="?page={{ page_obj.next_page_number }}">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </nav>
+                </div>
+            </div>
+    </body>
+    </html>
+{% endblock %}

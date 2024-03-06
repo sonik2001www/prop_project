@@ -1,0 +1,1401 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'property/css/style_projects.css' %}">
+    <title>Project</title>
+</head>
+
+<body>
+    <header class="sp-header py-1">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand d-inline-block me-4" href="#">
+                    Logo
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+                    id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink1"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Buy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Rent
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Sell
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                        <ul class="navbar-nav me-lg-2">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    AED
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink1">
+                                    <li><a class="dropdown-item" href="#">THB</a></li>
+                                    <li><a class="dropdown-item" href="#">ARS</a></li>
+                                    <li><a class="dropdown-item" href="#">AUD</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    EN
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink2">
+                                    <li><a class="dropdown-item" href="#">UA</a></li>
+                                    <li><a class="dropdown-item" href="#">RU</a></li>
+                                    <li><a class="dropdown-item" href="#">ES</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="btn-wrapper mb-2 mb-lg-0 me-lg-3">
+                            <a href="#" class="btn btn-sign">Sign In</a>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="#" class="btn btn-add">List your property</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="sp-about mb-4 mb-lg-5 py-4 py-lg-5">
+            <div class="container">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb sp-breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Projects</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                    </ol>
+                </nav>
+                <div class="sp-inner">
+                    <div
+                        class="sp-header d-flex flex-column flex-sm-row align-items-sm-center justify-content-between mt-4 mb-3">
+                        <div class="mb-2 mb-sm-0">
+                            <h1 class="heading-1">{{ project.project_name }}</h1>
+                            <span><i class="fa fa-solid fa-map-marker me-2"></i>{{ project.area }}, {{ project.location }}, {{ project.address }}</span>
+                        </div>
+                        <div class="sp-tags">
+                            <div class="sp-tag">
+                                {% if project.completion_date == None %}
+                                    {{ project.off_plan }}
+                                {% else %}
+                                    {{ project.completion_date }}
+                                {% endif %}
+                            </div>
+                            <div class="sp-tag">{{ project.floors }} Floors</div>
+                            <div class="sp-tag">{{ project.tower }} Tower</div>
+                            <div class="sp-tag">{{ project.units_num }} Units</div>
+                        </div>
+                    </div>
+                    <div class="sp-swiper mb-4">
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                            <div class="swiper-wrapper">
+                                {% for photo in photos_list %}
+                                    <div class="swiper-slide">
+                                        <img src="/{{ photo }}" />
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                        <div thumbsSlider="" class="swiper mySwiper d-none d-sm-flex">
+                            <div class="swiper-wrapper">
+                                {% for photo in photos_list %}
+                                    <div class="swiper-slide">
+                                        <img src="/{{ photo }}" />
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="sp-info mb-4">
+                            <h2 class="heading-2 mb-3">Overview of {{ project.project_name }} in {{ project.area }}, {{ project.location }}</h2>
+                            <p>{{ project.overview }}</p>
+                        </div>
+                        <div class="sp-info mb-4">
+                            <h2 class="heading-2 mb-3">About {{ project.project_name }}</h2>
+                            <p>{{ project.about }}</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-lg-6 mb-4 mb-lg-0">
+                                <div class="sp-info mb-4">
+                                    <h3 class="heading-3 mb-3">Project Information</h3>
+                                    <p>{{ project.description }}</p>
+                                </div>
+                                <div class="sp-info mb-4">
+                                    <h3 class="heading-3 mb-3">Room Types and Details</h3>
+                                    <p>1 bedroom (29 - 40 sq.m)</p>
+                                    <p>2 bedrooms (41 - 60.5 sq.m)</p>
+                                    <p>2 bedrooms with a swimming pool (137 - 148 sq.m)</p>
+                                    <p>3 bedrooms (​​99 - 150 sq.m)</p>
+                                    <p>3 bedrooms VIP (213 - 225 sq.m)</p>
+                                    <p>4 bedrooms with a swimming pool (267 sq.m)</p>
+                                    <p>5 bedrooms</p>
+                                </div>
+                                <div class="sp-info mb-4">
+                                    <h3 class="heading-3 mb-3">Direction</h3>
+                                    <p>{{ project.direction }}</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="sp-info mb-4">
+                                    <h3 class="heading-3 mb-3">Convenient</h3>
+                                    {% for category in facilities_categories %}
+                                        {% if category.category == 'Convenience' or category.category == 'Leisure' or category.category == 'Fitness' %}
+                                            <p>{{ category.name }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="sp-info mb-4">
+                                    <h3 class="heading-3 mb-3">Additional Services</h3>
+                                    {% for category in facilities_categories %}
+                                        {% if category.category == 'Additional Services' %}
+                                            <p>{{ category.name }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sp-about-info mb-4">                        
+                        <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
+                            <h2 class="heading-2 mb-3 mb-lg-0">Features & Amenities</h2>
+                            <div class="sp-pills-wrapper">
+                                <ul class="nav nav-pills sp-pills" id="pills-tab-2" role="tablist">
+                                    <li class="nav-item">
+                                        <button class="nav-link active" id="pills-all-2-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-all-2" type="button" role="tab"
+                                            aria-controls="pills-all-2" aria-selected="true">All</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-fitness-2-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-fitness-2" type="button" role="tab"
+                                            aria-controls="pills-fitness-2" aria-selected="false">Fitness</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-leisure-2-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-leisure-2" type="button" role="tab"
+                                            aria-controls="pills-leisure-2" aria-selected="false">Leisure</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="tab-content sp-gallery sp-gallery-fix-height mb-3" id="tabls-img-tabContent">
+                            <div class="tab-pane fade show active" id="tabls-img-1" role="tabpanel" aria-labelledby="tabls-img-1-tab">
+                                <div class="swiper swiper-gallery">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-2.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-3.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-4.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination swiper-gallery-pagination"></div>
+                                    <div class="swiper-button-next swiper-gallery-button-next"></div>
+                                    <div class="swiper-button-prev swiper-gallery-button-prev"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tabls-img-2" role="tabpanel" aria-labelledby="tabls-img-2-tab">
+                                <div class="swiper swiper-gallery">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-2.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-3.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-4.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination swiper-gallery-pagination"></div>
+                                    <div class="swiper-button-next swiper-gallery-button-next"></div>
+                                    <div class="swiper-button-prev swiper-gallery-button-prev"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tabls-img-3" role="tabpanel" aria-labelledby="tabls-img-3-tab">
+                                <div class="swiper swiper-gallery">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-2.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-3.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-4.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination swiper-gallery-pagination"></div>
+                                    <div class="swiper-button-next swiper-gallery-button-next"></div>
+                                    <div class="swiper-button-prev swiper-gallery-button-prev"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tabls-img-4" role="tabpanel" aria-labelledby="tabls-img-4-tab">
+                                <div class="swiper swiper-gallery">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-2.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-3.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-4.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination swiper-gallery-pagination"></div>
+                                    <div class="swiper-button-next swiper-gallery-button-next"></div>
+                                    <div class="swiper-button-prev swiper-gallery-button-prev"></div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tabls-img-5" role="tabpanel" aria-labelledby="tabls-img-5-tab">
+                                <div class="swiper swiper-gallery">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-1.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-2.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-3.webp" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="img-wrapper">
+                                                <img src="/media/img/g-4.webp" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination swiper-gallery-pagination"></div>
+                                    <div class="swiper-button-next swiper-gallery-button-next"></div>
+                                    <div class="swiper-button-prev swiper-gallery-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sp-tabs-wrapper mb-3">
+                            <ul class="nav nav-pills sp-tabs sp-tabs-thumb" id="tabls-img-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="tabls-img-1-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabls-img-1" type="button" role="tab" aria-controls="tabls-img-1"
+                                        aria-selected="true">
+                                        <div class="img-wrapper">
+                                            <img src="/media/img/thumb-1.webp" alt="">
+                                        </div>
+                                        <p>Communal Pool</p>
+                                        <p><small>67th Floor</small></p>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="tabls-img-2-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabls-img-2" type="button" role="tab" aria-controls="tabls-img-2"
+                                        aria-selected="false">
+                                        <div class="img-wrapper">
+                                            <img src="/media/img/thumb-2.webp" alt="">
+                                        </div>
+                                        <p>Communal Garden Area</p>
+                                        <p><small>67th Floor</small></p>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="tabls-img-3-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabls-img-3" type="button" role="tab" aria-controls="tabls-img-3"
+                                        aria-selected="false">
+                                        <div class="img-wrapper">
+                                            <img src="/media/img/thumb-3.webp" alt="">
+                                        </div>
+                                        <p>Tennis Court</p>
+                                        <p><small>67th Floor</small></p>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="tabls-img-4-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabls-img-4" type="button" role="tab" aria-controls="tabls-img-4"
+                                        aria-selected="false">
+                                        <div class="img-wrapper">
+                                            <img src="/media/img/thumb-4.webp" alt="">
+                                        </div>
+                                        <p>Communal Pool</p>
+                                        <p><small>67th Floor</small></p>
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="tabls-img-5-tab" data-bs-toggle="pill"
+                                        data-bs-target="#tabls-img-5" type="button" role="tab" aria-controls="tabls-img-5"
+                                        aria-selected="false">
+                                        <div class="img-wrapper">
+                                            <img src="/media/img/thumb-5.webp" alt="">
+                                        </div>
+                                        <p>Jacuzzi</p>
+                                        <p><small>67th Floor</small></p>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sp-info mb-4">
+                        <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
+                            <h2 class="heading-2 mb-3 mb-lg-0">Available Units at Grand Solaire Pattaya</h2>
+                            <div class="sp-pills-wrapper">
+                                <ul class="nav nav-pills sp-pills" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <button class="nav-link active" id="pills-all-297-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-all-297" type="button" role="tab"
+                                            aria-controls="pills-all-297" aria-selected="true">All</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-1-bed-297-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-1-bed-297" type="button" role="tab"
+                                            aria-controls="pills-1-bed-297" aria-selected="false">1 Bed</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-2-bed-297-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-2-bed-297" type="button" role="tab"
+                                            aria-controls="pills-2-bed-297" aria-selected="false">2 Bed</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-3-bed-297-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-3-bed-297" type="button" role="tab"
+                                            aria-controls="pills-3-bed-297" aria-selected="false">3 Bed</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-4-bed-297-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-4-bed-297" type="button" role="tab"
+                                            aria-controls="pills-4-bed-297" aria-selected="false">4 Bed</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="sp-widget__inner mb-4">
+                            <div class="form-group">
+                                <div class="simple-input">
+                                    <select id="sort" class="form-control select2-hidden-accessible" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option value="" selected>Sort: Recommended</option>
+                                        <option value="2">Sort: Price (low to high)</option>
+                                        <option value="3">Sort: Price (high to low)</option>
+                                        <option value="4">Sort: Best Value for Money</option>
+                                        <option value="5">Sort: Highest Guar. Rental Returns</option>
+                                        <option value="6">Sort: Completion Date</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="simple-input">
+                                    <select id="sort" class="form-control select2-hidden-accessible" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option value="" selected disabled>Unit type</option>
+                                        <option value="2">1BR</option>
+                                        <option value="2">2BR</option>
+                                        <option value="2">3BR</option>
+                                        <option value="2">4BR VIP</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <input type="text" class="form-control" placeholder="Min Price">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <div class="form-group">
+                                        <div class="">
+                                            <input type="text" class="form-control" placeholder="Max Price">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-12 col-lg-4">
+                                <div class="sp-condos__item vertical rounded">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/img-1.webp" alt="">
+                                    </div>
+                                    <div class="p-3">
+                                        <div
+                                            class="sp-condos__price d-flex flex-column flex-sm-row justify-content-between align-items-sm-center border-bottom pb-2 mb-3">
+                                            <p class="mb-2 mb-sm-0">AED423,000</p>
+                                            <p>(AED1,270/SqM)</p>
+                                        </div>
+                                        <div class="sp-condos__data mb-3">
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bed"></i>
+                                                2
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bath"></i>
+                                                2
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 320 512">
+                                                    <path
+                                                        d="M99.1 105.4C79 114 68.2 127.2 65.2 144.8c-2.4 14.1-.7 23.2 2 29.4c2.8 6.3 7.9 12.4 16.7 18.6c19.2 13.4 48.3 22.1 84.9 32.5c1 .3 1.9 .6 2.9 .8c32.7 9.3 72 20.6 100.9 40.7c15.7 10.9 29.9 25.5 38.6 45.1c8.8 19.8 10.8 42 6.6 66.3c-7.3 42.5-35.3 71.7-71.8 87.3c-35.4 15.2-79.1 17.9-123.7 10.9l-.2 0 0 0c-24-3.9-62.7-17.1-87.6-25.6c-4.8-1.7-9.2-3.1-12.8-4.3C5.1 440.8-3.9 422.7 1.6 405.9s23.7-25.8 40.5-20.3c4.9 1.6 10.2 3.4 15.9 5.4c25.4 8.6 56.4 19.2 74.4 22.1c36.8 5.7 67.5 2.5 88.5-6.5c20.1-8.6 30.8-21.8 33.9-39.4c2.4-14.1 .7-23.2-2-29.4c-2.8-6.3-7.9-12.4-16.7-18.6c-19.2-13.4-48.3-22.1-84.9-32.5c-1-.3-1.9-.6-2.9-.8c-32.7-9.3-72-20.6-100.9-40.7c-15.7-10.9-29.9-25.5-38.6-45.1c-8.8-19.8-10.8-42-6.6-66.3l31.5 5.5L2.1 133.9C9.4 91.4 37.4 62.2 73.9 46.6c35.4-15.2 79.1-17.9 123.7-10.9c13 2 52.4 9.6 66.6 13.4c17.1 4.5 27.2 22.1 22.7 39.2s-22.1 27.2-39.2 22.7c-11.2-3-48.1-10.2-60.1-12l4.9-31.5-4.9 31.5c-36.9-5.8-67.5-2.5-88.6 6.5z" />
+                                                </svg>
+                                                332 SqM
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-building"></i>
+                                                3 Floor
+                                            </div>
+                                        </div>
+                                        <div class="sp-condos__tags border-bottom pb-3 mb-3">
+                                            <div class="sp-condos__tag red">Test 1</div>
+                                            <div class="sp-condos__tag green">Test 2</div>
+                                            <div class="sp-condos__tag green">Test 3</div>
+                                            <div class="sp-condos__tag green">Test 4</div>
+                                            <div class="sp-condos__tag blue">Test 5</div>
+                                        </div>
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            <a href="#" class="btn sp-condos__btn-red mb-3 mb-sm-0">Enquire Now</a>
+                                            <a href="#" class="btn sp-condos__btn">More Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="sp-condos__item vertical rounded">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/img-1.webp" alt="">
+                                    </div>
+                                    <div class="p-3">
+                                        <div
+                                            class="sp-condos__price d-flex flex-column flex-sm-row justify-content-between align-items-sm-center border-bottom pb-2 mb-3">
+                                            <p class="mb-2 mb-sm-0">AED423,000</p>
+                                            <p>(AED1,270/SqM)</p>
+                                        </div>
+                                        <div class="sp-condos__data mb-3">
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bed"></i>
+                                                2
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bath"></i>
+                                                2
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 320 512">
+                                                    <path
+                                                        d="M99.1 105.4C79 114 68.2 127.2 65.2 144.8c-2.4 14.1-.7 23.2 2 29.4c2.8 6.3 7.9 12.4 16.7 18.6c19.2 13.4 48.3 22.1 84.9 32.5c1 .3 1.9 .6 2.9 .8c32.7 9.3 72 20.6 100.9 40.7c15.7 10.9 29.9 25.5 38.6 45.1c8.8 19.8 10.8 42 6.6 66.3c-7.3 42.5-35.3 71.7-71.8 87.3c-35.4 15.2-79.1 17.9-123.7 10.9l-.2 0 0 0c-24-3.9-62.7-17.1-87.6-25.6c-4.8-1.7-9.2-3.1-12.8-4.3C5.1 440.8-3.9 422.7 1.6 405.9s23.7-25.8 40.5-20.3c4.9 1.6 10.2 3.4 15.9 5.4c25.4 8.6 56.4 19.2 74.4 22.1c36.8 5.7 67.5 2.5 88.5-6.5c20.1-8.6 30.8-21.8 33.9-39.4c2.4-14.1 .7-23.2-2-29.4c-2.8-6.3-7.9-12.4-16.7-18.6c-19.2-13.4-48.3-22.1-84.9-32.5c-1-.3-1.9-.6-2.9-.8c-32.7-9.3-72-20.6-100.9-40.7c-15.7-10.9-29.9-25.5-38.6-45.1c-8.8-19.8-10.8-42-6.6-66.3l31.5 5.5L2.1 133.9C9.4 91.4 37.4 62.2 73.9 46.6c35.4-15.2 79.1-17.9 123.7-10.9c13 2 52.4 9.6 66.6 13.4c17.1 4.5 27.2 22.1 22.7 39.2s-22.1 27.2-39.2 22.7c-11.2-3-48.1-10.2-60.1-12l4.9-31.5-4.9 31.5c-36.9-5.8-67.5-2.5-88.6 6.5z" />
+                                                </svg>
+                                                332 SqM
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-building"></i>
+                                                3 Floor
+                                            </div>
+                                        </div>
+                                        <div class="sp-condos__tags border-bottom pb-3 mb-3">
+                                            <div class="sp-condos__tag red">Test 1</div>
+                                            <div class="sp-condos__tag green">Test 2</div>
+                                            <div class="sp-condos__tag green">Test 3</div>
+                                            <div class="sp-condos__tag green">Test 4</div>
+                                            <div class="sp-condos__tag blue">Test 5</div>
+                                        </div>
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            <a href="#" class="btn sp-condos__btn-red mb-3 mb-sm-0">Enquire Now</a>
+                                            <a href="#" class="btn sp-condos__btn">More Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-4">
+                                <div class="sp-condos__item vertical rounded">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/img-1.webp" alt="">
+                                    </div>
+                                    <div class="p-3">
+                                        <div
+                                            class="sp-condos__price d-flex flex-column flex-sm-row justify-content-between align-items-sm-center border-bottom pb-2 mb-3">
+                                            <p class="mb-2 mb-sm-0">AED423,000</p>
+                                            <p>(AED1,270/SqM)</p>
+                                        </div>
+                                        <div class="sp-condos__data mb-3">
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bed"></i>
+                                                2
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bath"></i>
+                                                2
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 320 512">
+                                                    <path
+                                                        d="M99.1 105.4C79 114 68.2 127.2 65.2 144.8c-2.4 14.1-.7 23.2 2 29.4c2.8 6.3 7.9 12.4 16.7 18.6c19.2 13.4 48.3 22.1 84.9 32.5c1 .3 1.9 .6 2.9 .8c32.7 9.3 72 20.6 100.9 40.7c15.7 10.9 29.9 25.5 38.6 45.1c8.8 19.8 10.8 42 6.6 66.3c-7.3 42.5-35.3 71.7-71.8 87.3c-35.4 15.2-79.1 17.9-123.7 10.9l-.2 0 0 0c-24-3.9-62.7-17.1-87.6-25.6c-4.8-1.7-9.2-3.1-12.8-4.3C5.1 440.8-3.9 422.7 1.6 405.9s23.7-25.8 40.5-20.3c4.9 1.6 10.2 3.4 15.9 5.4c25.4 8.6 56.4 19.2 74.4 22.1c36.8 5.7 67.5 2.5 88.5-6.5c20.1-8.6 30.8-21.8 33.9-39.4c2.4-14.1 .7-23.2-2-29.4c-2.8-6.3-7.9-12.4-16.7-18.6c-19.2-13.4-48.3-22.1-84.9-32.5c-1-.3-1.9-.6-2.9-.8c-32.7-9.3-72-20.6-100.9-40.7c-15.7-10.9-29.9-25.5-38.6-45.1c-8.8-19.8-10.8-42-6.6-66.3l31.5 5.5L2.1 133.9C9.4 91.4 37.4 62.2 73.9 46.6c35.4-15.2 79.1-17.9 123.7-10.9c13 2 52.4 9.6 66.6 13.4c17.1 4.5 27.2 22.1 22.7 39.2s-22.1 27.2-39.2 22.7c-11.2-3-48.1-10.2-60.1-12l4.9-31.5-4.9 31.5c-36.9-5.8-67.5-2.5-88.6 6.5z" />
+                                                </svg>
+                                                332 SqM
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-building"></i>
+                                                3 Floor
+                                            </div>
+                                        </div>
+                                        <div class="sp-condos__tags border-bottom pb-3 mb-3">
+                                            <div class="sp-condos__tag red">Test 1</div>
+                                            <div class="sp-condos__tag green">Test 2</div>
+                                            <div class="sp-condos__tag green">Test 3</div>
+                                            <div class="sp-condos__tag green">Test 4</div>
+                                            <div class="sp-condos__tag blue">Test 5</div>
+                                        </div>
+                                        <div
+                                            class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            <a href="#" class="btn sp-condos__btn-red mb-3 mb-sm-0">Enquire Now</a>
+                                            <a href="#" class="btn sp-condos__btn">More Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between">
+                            <p>Get notified when new homes are being added to Grand Solaire Pattaya <a href="#"
+                                    class="btn sp-condos__btn py-2">Create Alert</a></p>
+                            <a class="sp-green" href="#">View All (401)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-cta mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <div class="sp-cta__inner">
+                    <h2 class="heading-2 sp-white mb-1 mb-lg-2">Do you own a property at The Muve Ram 22?</h2>
+                    <p>Find out how much your property is worth and start your listing for free.</p>
+                    <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                        <a href="#" class="btn mt-2 mt-lg-3 me-sm-3">Valuate Now</a>
+                        <a href="#" class="btn mt-2 mt-lg-3">How it Works</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-condos mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-4">Facilities and Floor Plans</h2>
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <h3 class="heading-3 mb-3">Facilities</h3>
+                            <div class="mb-3">
+                                <strong>Leisure</strong>
+                                <ul>
+                                    {% for category in facilities_categories %}
+                                        {% if category.category == 'Leisure' %}
+                                            <li>{{ category.name }}</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        <div class="mb-3">
+                            <strong>Fitness</strong>
+                            <ul>
+                                {% for category in facilities_categories %}
+                                    {% if category.category == 'Fitness' %}
+                                         <li>{{ category.name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Convenience</strong>
+                            <ul>
+                                {% for category in facilities_categories %}
+                                    {% if category.category == 'Convenience' %}
+                                        <li>{{ category.name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Safety</strong>
+                            <ul>
+                                {% for category in facilities_categories %}
+                                    {% if category.category == 'Safety' %}
+                                        <li>{{ category.name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <h3 class="heading-3 mb-3">Parking & Lift</h3>
+                        <div class="mb-3">
+                            <ul>
+                                {% for category in facilities_categories %}
+                                    {% if category.category == 'Parking & Lift' %}
+                                        <li>{{ category.name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <h3 class="heading-3 mb-3">Management</h3>
+                        <div>
+                            <ul>
+                                {% for category in facilities_categories %}
+                                    {% if category.category == 'Management' %}
+                                        <li>{{ category.name }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="sp-condos mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-4">Facilities and Floor Plans</h2>
+                <div class="table-responsive sp-table-wrapper p-0 mb-3">
+                    <table class="table table-striped sp-table">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">Installment</th>
+                                <th class="text-center" scope="col">Milestone</th>
+                                <th class="text-center" scope="col">Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive sp-table-wrapper p-0">
+                    <table class="table table-striped sp-table">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">Installment</th>
+                                <th class="text-center" scope="col">Milestone</th>
+                                <th class="text-center" scope="col">Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">Deposit</td>
+                                <td class="text-center">Immediately</td>
+                                <td class="text-center">AED10,700</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-4">Master Plan</h2>
+                <a href="/media/projects_photos/{{ project.photo_name }}/master_plan/master-plan.webp" class="sp-img-link" target="_blank">
+                    <img src="/media/projects_photos/{{ project.photo_name }}/master_plan/master-plan.webp" alt="">
+                </a>
+            </div>
+        </section>
+        
+        <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <div class="sp-header d-flex flex-column flex-sm-row align-items-sm-center justify-content-between mb-4">
+                    <h2 class="heading-2 mb-2 mb-sm-0">Building Floor Plans</h2>
+                    <div class="form-group">
+                        <div class="simple-input">
+                            <select id="sort" class="form-control select2-hidden-accessible" tabindex="-1"
+                                aria-hidden="true">
+                                <option value="" selected>Floor 5</option>
+                                <option value="2">Floor 6</option>
+                                <option value="3">Floor 7</option>
+                                <option value="4">Floor 8</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <a href="/media/projects_photos/{{ project.photo_name }}/floor_plans/gs-a3-flr-5.webp" class="sp-img-link" target="_blank">
+                    <img src="/media/projects_photos/{{ project.photo_name }}/floor_plans/gs-a3-flr-5.webp" alt="">
+                </a>
+            </div>
+        </section>
+
+        <section class="sp-gallery mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+                        <div class="swiper swiper-gallery">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/b-1.webp" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/b-2.webp" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/b-3.webp" alt="">
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/b-4.webp" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-pagination swiper-gallery-pagination"></div>
+                            <div class="swiper-button-next swiper-gallery-button-next"></div>
+                            <div class="swiper-button-prev swiper-gallery-button-prev"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <img class="d-block rounded ms-auto mb-4" src="/media/img/logo-grand.webp" alt="" width="100" height="100">
+                        <div class="w-100">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h4 class="heading-4">Grand Solaire Pattaya</h4>
+                                <h4 class="heading-4 sp-green">10%</h4>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" style="width: 10%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-condos mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <div class="sp-inner">
+
+                        <div class="sp-header d-flex flex-column flex-sm-row align-items-sm-center justify-content-between mt-4 mb-3">
+                            <h2 class="heading-2 mb-2 mb-sm-0">About the Developer - {{ project.developer.developer_name }}</h2>
+                            <div class="sp-tags">
+                                <div class="sp-tag">{{ project.developer.project_count }} Projects</div>
+                                <div class="sp-tag">{{ project.developer.total_no_of_units }} Units</div>
+                                <a href="#" class="sp-tag">
+                                    <i class="fa fa-solid fa-share"></i>
+                                    Share
+                                </a>
+                            </div>
+                        </div>
+                        <div class="sp-info">
+                            <div class="sp-info-logo pt-3">
+                                <img src="/media/developers_photos/{{ project.developer.photo_name }}/dev-logo.jpg" alt="">
+                            </div>
+                            <h2 class="heading-2 mb-2">{{ description_main }}</h2>
+                            {% for text in description_text %}
+                                <p>{{ text }}</p>
+                            {% endfor %}
+                        </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-condos mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-3">Frequently Asked Questions</h2>
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                aria-controls="panelsStayOpen-collapseOne">
+                                Question #1
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                            aria-labelledby="panelsStayOpen-headingOne">
+                            <div class="accordion-body">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ipsum doloribus vel tempore consequuntur quasi illo sapiente inventore, quas assumenda ducimus cupiditate exercitationem debitis numquam porro, quisquam cumque obcaecati optio.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseTwo">
+                                Question #2
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingTwo">
+                            <div class="accordion-body">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique facere commodi optio quis eos cupiditate veniam laboriosam doloribus ea nam, ab nisi adipisci consectetur eveniet, ipsam blanditiis obcaecati libero laborum.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseThree">
+                                Question #3
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                            aria-labelledby="panelsStayOpen-headingThree">
+                            <div class="accordion-body">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque itaque molestias ratione molestiae ea, nulla voluptatum ab voluptatem rerum voluptates hic voluptas, voluptatibus fuga nam quisquam corporis praesentium quo ullam!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-condos mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <div class="sp-header d-flex flex-column flex-sm-row align-items-sm-center justify-content-between mt-4 mb-3">
+                    <h2 class="heading-2 mb-2 mb-sm-0">Reviews</h2>
+                    <div class="sp-tags">
+                        <a href="#" class="sp-tag">
+                            <i class="fa fa-solid fa-share"></i>
+                            Write a review
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-6 mb-3 mb-lg-0">
+                        <div class="sp-condos__item sp-condos__review rounded p-3 mb-3">
+                            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-2">
+                                <div class="sp-condos__info">
+                                    <h3 class="heading-3">5 out of 5</h3>
+                                </div>
+                                <div class="d-flex flex-column align-items-sm-center">
+                                    <div class="sp-condos__stars big">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sp-condos__text border-bottom pb-3 mb-3">
+                                <p><b>Based on <span class="sp-green">6 Reviews</span></b></p>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-6 col-lg-4 mb-2">
+                                    <div class="sp-condos__stars">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                    </div>
+                                    <p>Maintenance</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-4 mb-2">
+                                    <div class="sp-condos__stars">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                    </div>
+                                    <p> Staff / Security</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-4 mb-2">
+                                    <div class="sp-condos__stars">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                    </div>
+                                    <p>Facilities on Site</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-4 mb-2">
+                                    <div class="sp-condos__stars">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                    </div>
+                                    <p>Quality of Finishing</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-4 mb-2">
+                                    <div class="sp-condos__stars">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                    </div>
+                                    <p>Value for Money</p>
+                                </div>
+                                <div class="col-12 col-sm-6 col-lg-4 mb-2">
+                                    <div class="sp-condos__stars">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                        <img src="/media/img/star-solid.svg" alt="">
+                                    </div>
+                                    <p>Location</p>
+                                </div>
+                            </div>
+                        </div> 
+                        <a class="sp-condos__item rounded p-3 mb-3">
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-start">
+                                        <div class="sp-condos__info">
+                                            <h3 class="sp-condos__title">Name Surname</h3>
+                                            <p class="sp-condos__address">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid totam, doloribus hic animi similique, corporis cumque ut, iste maxime itaque at voluptate odio repellat vero aperiam ducimus unde eveniet nam.</p>
+                                        </div>
+                                        <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                            <div class="d-flex flex-column align-items-sm-center">
+                                                <div class="sp-condos__stars">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <a class="sp-condos__item rounded p-3 mb-3">
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-start">
+                                        <div class="sp-condos__info">
+                                            <h3 class="sp-condos__title">Name Surname</h3>
+                                            <p class="sp-condos__address">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid totam, doloribus hic animi similique, corporis cumque ut, iste maxime itaque at voluptate odio repellat vero aperiam ducimus unde eveniet nam.</p>
+                                        </div>
+                                        <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                            <div class="d-flex flex-column align-items-sm-center">
+                                                <div class="sp-condos__stars">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                    <img src="/media/img/star-solid.svg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="sp-condos__item sp-condos__review rounded p-3">
+                            <div class="row">
+                                <div class="col-12 col-lg-5 mb-3 mb-lg-0">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/saraphi-2.webp" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-7">
+                                    <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center border-bottom pb-2 mb-3">
+                                        <div class="sp-condos__info">
+                                            <h3 class="sp-condos__title">Hua Mak</h3>
+                                            <p class="sp-condos__address">Bangkok</p>
+                                        </div>
+                                    </div>
+                                    <div class="sp-condos__text mb-3">
+                                        <p><b>Neighborhood Overview</b></p>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 mb-2 mb-lg-3">
+                                            <div class="sp-condos__data-item align-items-start">
+                                                <h4><i class="fa fa-solid fa-home"></i></h4>
+                                                <div class="d-flex flex-column">
+                                                    <strong>Buy</strong>
+                                                    <small>AED86K - AED22.3M</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6 mb-2 mb-lg-3">
+                                            <div class="sp-condos__data-item align-items-start">
+                                                <h4><i class="fa fa-solid fa-home"></i></h4>
+                                                <div class="d-flex flex-column">
+                                                    <strong>For Sale on FazWaz.co.th</strong>
+                                                    <small><a class="sp-green" href="#">285 properties</a></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6 mb-2 mb-lg-3">
+                                            <div class="sp-condos__data-item align-items-start">
+                                                <h6><i class="fa fa-solid fa-credit-card-alt"></i></h6>
+                                                <div class="d-flex flex-column">
+                                                    <strong>Rent</strong>
+                                                    <small>AED447 - AED20.1K</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6 mb-2 mb-lg-3">
+                                            <div class="sp-condos__data-item align-items-start">
+                                                <h6><i class="fa fa-solid fa-credit-card-alt"></i></h6>
+                                                <div class="d-flex flex-column">
+                                                    <strong>For Rent on FazWaz.co.th</strong>
+                                                    <small><a class="sp-green" href="#">87 properties</a></small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6 mb-2 mb-lg-0">
+                                            <div class="sp-condos__data-item align-items-start">
+                                                <h4><i class="fa fa-solid fa-map-marker"></i></h4>
+                                                <div class="d-flex flex-column">
+                                                    <strong>To The Mall Ramkhamhaeng 3</strong>
+                                                    <small>1.1 km / 3 minutes by driving</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6">
+                                            <div class="sp-condos__data-item align-items-start">
+                                                <h4><i class="fa fa-solid fa-map-marker"></i></h4>
+                                                <div class="d-flex flex-column">
+                                                    <strong>To Suvarnabhumi Airport</strong>
+                                                    <small>24.2 km / 26 minutes by driving</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>                              
+            </div>
+        </section>
+
+        <section class="sp-map mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-4">Location and Neighborhood</h2>
+            </div>
+            <iframe
+                  width="600"
+                  height="450"
+                  style="border:0"
+                  loading="lazy"
+                  allowfullscreen
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBuNKhbP609Fb3jQassP8wqp9xdebMIT7w&q={{project.map_latitude}},{{project.map_longitude}}">
+            </iframe>
+        </section>
+
+
+        <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-3">Surrounding area</h2>
+                <p class="mb-3">The Muve Ram 22 is conveniently located just 410 m from 7-Eleven Ramkhamhaeng 25 Branch (00704), which can be reached within 6 mins. by foot.</p>
+                <p class="mb-2">There are many other shops situated in the area of The Muve Ram 22, the 3 closest being:</p>
+                <ul class="mb-3">
+                    <li>Top Soi 24 Eyeglasses is 320 m away (about 4 mins. by foot)</li>
+                    <li>6006 Cps Big C Ramkhamhaeng is 290 m away (about 4 mins. by foot)</li>
+                    <li>K. Accessories Huamark is 400 m away (about 6 mins. by foot)</li>
+                </ul>
+                <p class="mb-2">The surrounding area, where The Muve Ram 22 is situated, offers a wide variety of restaurants. See the closest of them below:</p>
+                <ul class="mb-3">
+                    <li>Ginzaab Delivery is 450 m away (a walk of about 6 mins.)</li>
+                    <li>Hat Yai Fried Chicken is 470 m away (a walk of about 6 mins.)</li>
+                    <li>Texas Chicken Ramkhamhaeng Soi 24 is 460 m away (a walk of about 6 mins.)</li>
+                </ul>
+                <p class="mb-2">Rak Fun Ram 21 Clinic is the nearest health facility, which is 570 m away (you can walk there in 8 mins.) from the project, while the closest schools in the proximity of The Muve Ram 22 are:</p>
+                <ul class="mb-3">
+                    <li>RU Demonstration School is 360 m away (about 5 mins. by foot)</li>
+                    <li>children's school is 320 m away (about 4 mins. by foot)</li>
+                    <li>Opinion is 260 m away (about 3 mins. by foot)</li>
+                </ul>
+                <p>Suvarnabhumi Airport is located 24.6 km from The Muve Ram 22 and it takes about 25 mins. by car or taxi (depending on the traffic) to get there.</p>
+            </div>
+        </section>        
+
+        <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+            <div class="container">
+                <h2 class="heading-2 mb-3">Projects Nearby The Muve Ram 22</h2>
+                <div class="table-responsive sp-table-wrapper p-0">
+                    <table class="table table-striped sp-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="240"></th>
+                                <th scope="col">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/city-1.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/city-2.webp" alt="">
+                                    </div>
+                                </th>
+                                <th scope="col">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/city-3.webp" alt="">
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Project Name</th>
+                                <td class="text-center"><a href="#">CYBIQ Ramkhamhaeng</a></td>
+                                <td class="text-center"><a href="#">Ban Wada Park</a></td>
+                                <td class="text-center"><a href="#">Ruenrom Condo 1</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Location</th>
+                                <td class="text-center">Hua Mak, Bang Kapi, Bangkok</td>
+                                <td class="text-center">Hua Mak, Bang Kapi, Bangkok</td>
+                                <td class="text-center">Hua Mak, Bang Kapi, Bangkok</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Number of units</th>
+                                <td class="text-center">121</td>
+                                <td class="text-center">138</td>
+                                <td class="text-center">54</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Sales Prices</th>
+                                <td class="text-center">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <a href="#">AED203K - AED470K</a>
+                                        <small>-14.8% underpriced</small>
+                                    </div>
+                                </td>
+                                <td class="text-center">N/A</td>
+                                <td class="text-center">N/A</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Monthly Rentals</th>
+                                <td class="text-center">N/A</td>
+                                <td class="text-center"><a href="#">AED483</a></td>
+                                <td class="text-center"><a href="#">AED215</a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Year Built</th>
+                                <td class="text-center">Jun 2022</td>
+                                <td class="text-center">Dec 1992</td>
+                                <td class="text-center">Dec 1995</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Completion Status</th>
+                                <td class="text-center">Completed</td>
+                                <td class="text-center">Completed</td>
+                                <td class="text-center">Completed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="sp-footer py-3 mt-4">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Thailand
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                        <li><a class="dropdown-item" href="#">Nepal</a></li>
+                        <li><a class="dropdown-item" href="#">India</a></li>
+                        <li><a class="dropdown-item" href="#">China</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Buy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Rent</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sell</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Projects</a></li>
+            </ul>
+            <div class="d-flex flex-column flex-sm-row justify-content-between">
+                <ul class="nav justify-content-center justify-content-sm-start">
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Privacy</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Press</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Careers</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Sitemap</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Virtual Real Estate</a></li>
+                </ul>
+                <p class="text-center">© 2023 <a href="#">bangkok-condos-for-sale.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'property/js/script.js' %}"></script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{% extends 'agent/base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h2>Edit Property</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {% for field in form %}
+                    <tr>
+                        <td>{{ field.label_tag }}</td>
+                        <td>{{ field }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div style="padding: 10px">
+                <button type="submit" class="btn sp-condos__btn">Update</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

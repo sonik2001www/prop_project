@@ -1,0 +1,244 @@
+{% extends "agent/base.html" %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+            }
+
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .input-group {
+                margin-bottom: 10px;
+            }
+
+            .input-group label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            .input-group input {
+                width: 90%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+
+            .input-group button {
+                padding: 10px 20px;
+                background-color: #4caf50;
+                color: #fff;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container" style="max-width: 90%;">
+            <h1>Properties</h1>
+
+            <form method="GET" action="{% url 'agent_properties' %}">
+                <p>Search by:</p>
+                <div style="padding: 10px 0px">
+                    <input type="text" name="search_pk" placeholder="ID" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 100px;">
+                    <button class="btn sp-condos__btn" type="submit">Search</button>
+                </div>
+                <div style="padding: 10px opx">
+                    <input type="text" name="search_external_id" placeholder="External Property ID" style="padding: 10px; border: 1px solid #ccc; border-radius: 4px; width: 200px;">
+                    <button class="btn sp-condos__btn" type="submit">Search</button>
+                </div>
+            </form>
+
+                 <div class="table-responsive sp-table-wrapper">
+                     <form method="post" action="{% url 'agent_properties_sort' items_per_page sort_order %}">{% csrf_token %}
+                        <table class="table table-striped sp-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id<a href="{% url 'agent_properties_sort' items_per_page 'asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'desc' %}">&#9660;</a></th>
+                                    <th scope="col">External property id<a href="{% url 'agent_properties_sort' items_per_page 'external_property_id_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'external_property_id_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Property Name<a href="{% url 'agent_properties_sort' items_per_page 'property_name_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'property_name_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Project<a href="{% url 'agent_properties_sort' items_per_page 'project__project_name_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'project__project_name_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Overview<a href="{% url 'agent_properties_sort' items_per_page 'project__overview_key__name_overview_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'project__overview_key__name_overview_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Property type</th>
+                                    <th scope="col">Listing type</th>
+                                    <th scope="col">Selling price<a href="{% url 'agent_properties_sort' items_per_page 'sold_price_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'sold_price_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Rent price<a href="{% url 'agent_properties_sort' items_per_page 'rent_price_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'rent_price_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Badrooms<a href="{% url 'agent_properties_sort' items_per_page 'bedrooms_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'bedrooms_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Bathrooms<a href="{% url 'agent_properties_sort' items_per_page 'bathrooms_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'bathrooms_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Property size<a href="{% url 'agent_properties_sort' items_per_page 'property_size_asc' %}">&#9650;</a><a href="{% url 'agent_properties_sort' items_per_page 'property_size_desc' %}">&#9660;</a></th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for property in page_obj %}
+                                        <tr>
+                                            <th scope="row">{{ property.pk }}</th>
+                                            <td>{{ property.external_property_id }}</td>
+                                            <td>{{ property.property_name }}</td>
+                                            <td>{{ property.project.project_name }}</td>
+                                            <td>{{ property.project.overview_key.name_overview }}</td>
+                                            <td>{{ property.property_type }}</td>
+                                            <td>{{ property.listing_type }}</td>
+                                            <td>{{ property.sold_price }}</td>
+                                            <td>{{ property.rent_price }}</td>
+                                            <td>{{ property.bedrooms }}</td>
+                                            <td>{{ property.bathrooms }}</td>
+                                            <td>{{ property.property_size }}</td>
+                                            <td>
+                                                <input type="hidden" name="{{ property.id }}" value="off">
+                                                <input name="{{ property.id }}" id="{{ property.id }}" type="checkbox" class="status-checkbox" data-property-id="{{ property.id }}" {% if property.status %}checked{% endif %}>
+                                            </td>
+                                            <td><a href="/agent/property_update/{{ property.pk }}" class="btn sp-condos__btn" style="color: white">Update</a></td>
+                                        </tr>
+                                {% endfor %}
+                                <input type="hidden" name="page" value="{{ page_obj.number }}">
+                            </tbody>
+                        </table>
+
+                         <input type="hidden" name="items_per_page" value="{{ items_per_page }}">
+                         <input type="hidden" name="page" value="{{ page_obj.number }}">
+
+
+                         <div class="row" style="padding: 10px;">
+                             <div class="col">
+                                 <form method="GET" action="{% url 'agent_properties_sort' items_per_page sort_order %}">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group d-flex align-items-center">
+                                                <label for="items_per_page" class="mr-2">Listing per page:</label>
+                                                <a href="{% url 'agent_properties_sort' '15' sort_order %}" class="btn sp-condos__btn" style="{% if items_per_page == '15' %}display: none{% endif %}">
+                                                    15
+                                                </a>
+                                                <a href="{% url 'agent_properties_sort' '100' sort_order %}" type="submit" name="items_per_page" value="15" class="btn sp-condos__btn" style="{% if items_per_page == '100' %}display: none{% endif %}">
+                                                    100
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                             </div>
+                             <div style="text-align: end;" class="col">
+                                 <input type="hidden" name="items_per_page-sort_order" value="{{ items_per_page }}&{{ sort_order }}">
+                                 <button type="submit" class="btn sp-condos__btn">Save</button>
+                             </div>
+                         </div>
+                         <hr>
+                     </form>
+                </div>
+            <div style="margin: 10px;">
+                    <p class="text-center mt-4">Showing {{ first_index }} - {{ last_index }} of {{ len_developers }} Results</p>
+
+                        <nav class="d-flex justify-content-center mt-4" aria-label="Page navigation">
+                            <ul class="sp-pagination d-flex align-items-center">
+
+                                <!-- Попередній елемент -->
+                                <li class="sp-pagination__item">
+                                    {% if page_obj.has_previous %}
+                                    <a class="sp-pagination__link arrow-prev" href="?page={{ page_obj.previous_page_number }}">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                    {% endif %}
+                                </li>
+
+                                <!-- Перша сторінка -->
+                                {% if page_obj.number > 2 %}
+                                <li class="sp-pagination__item">
+                                    <a class="sp-pagination__link {% if page_obj.number == 1 %}active{% endif %}" href="?page=1">1</a>
+                                </li>
+                                {% endif %}
+
+                                <!-- Елементи пагінації -->
+                                {% if page_obj.number > 3 %}
+                                    <li class="sp-pagination__item">
+                                        <a class="sp-pagination__link borderless" href="#">...</a>
+                                    </li>
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if num > page_obj.number|add:-2 and num < page_obj.number|add:2 %}
+                                        <li class="sp-pagination__item">
+                                            <a class="sp-pagination__link {% if page_obj.number == num %}active{% endif %}" href="?page={{ num }}">{{ num }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.number < page_obj.paginator.num_pages|add:-2 %}
+                                    <li class="sp-pagination__item">
+                                        <a class="sp-pagination__link borderless" href="#">...</a>
+                                    </li>
+                                {% endif %}
+
+                                {% if page_obj.paginator.num_pages > page_obj.number|add:1  %}
+                                    <li class="sp-pagination__item">
+                                        <a class="sp-pagination__link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                    </li>
+                                {% endif %}
+
+                                <!-- Наступний елемент -->
+                                <li class="sp-pagination__item">
+                                    {% if page_obj.has_next %}
+                                    <a class="sp-pagination__link arrow-next" href="?page={{ page_obj.next_page_number }}">
+                                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </a>
+                                    {% endif %}
+                                </li>
+
+                            </ul>
+                        </nav>
+
+                </div>
+            </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(".status-checkbox").change(function() {
+            var propertyId = $(this).data("property-id");
+            var isChecked = $(this).is(":checked");
+
+            $.ajax({
+                url: "/update_status/",
+                type: "POST",
+                data: {
+                    property_id: propertyId,
+                    is_checked: isChecked,
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                },
+                success: function(response) {
+                    // Опціонально: обновити відображення статусу на сторінці
+                    if (isChecked) {
+                        $(this).attr("checked", true);
+                    } else {
+                        $(this).removeAttr("checked");
+                    }
+                },
+                error: function(xhr, errmsg, err) {
+                    console.log(xhr.status + ": " + xhr.responseText);
+                }
+            });
+        });
+    });
+    </script>
+
+    </body>
+    </html>
+{% endblock %}

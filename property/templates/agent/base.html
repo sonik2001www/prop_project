@@ -1,0 +1,74 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'property/css/style.css' %}">
+    <meta name="description" content="{{ meta.description }}"/>
+    <title>{{ meta.title }}</title>
+</head>
+
+<body>
+{% if request.user.is_authenticated %}
+  <header class="sp-header py-1" style="padding: 100px; position: relative;">
+      <div class="d-flex justify-content-center text-center">
+          <div class="row">
+              <div class="col">
+                  <a href="{% url 'parsing' %}">
+                      <button class="btn btn-add">Parsing</button>
+                  </a>
+              </div>
+              <div class="col">
+                  <a href="{% url 'agent_overviews' %}">
+                      <button class="btn btn-add">Overviews</button>
+                  </a>
+              </div>
+              <div class="col">
+                  <a href="{% url 'agent_projects' %}">
+                      <button class="btn btn-add">Projects</button>
+                  </a>
+              </div>
+              <div class="col">
+                  <a href="{% url 'agent_properties' %}">
+                      <button class="btn btn-add">Properties</button>
+                  </a>
+              </div>
+              <div class="col">
+                  <a href="{% url 'agent_property_create' %}">
+                      <button class="btn btn-add">Create</button>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </header>
+
+    <main>
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+
+
+    <footer class="sp-footer py-3">
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'property/js/script.js' %}"></script>
+
+{% else %}
+   <p>Access denied. Only superusers can view this page.</p>
+{% endif %}
+</body>
+
+</html>

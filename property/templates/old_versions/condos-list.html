@@ -1,0 +1,987 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'property/css/style.css' %}">
+    <meta name="description" content="{{ meta.description }}"/>
+    <title>{{ meta.title }}</title>
+</head>
+
+<body>
+    <header class="sp-header py-1">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand d-inline-block me-4" href="#">
+                    Logo
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-lg-flex align-items-lg-center justify-content-lg-between"
+                    id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdownMenuLink1"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Buy
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Rent
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Sell
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink4" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Projects
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink4">
+                                <li><a class="dropdown-item" href="#">Item 1</a></li>
+                                <li><a class="dropdown-item" href="#">Item 2</a></li>
+                                <li><a class="dropdown-item" href="#">Item 3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-lg-center">
+                        <ul class="navbar-nav me-lg-2">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink1" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    AED
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink1">
+                                    <li><a class="dropdown-item" href="#">THB</a></li>
+                                    <li><a class="dropdown-item" href="#">ARS</a></li>
+                                    <li><a class="dropdown-item" href="#">AUD</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    EN
+                                </a>
+                                <ul class="dropdown-menu small" aria-labelledby="navbarDropdownMenuLink2">
+                                    <li><a class="dropdown-item" href="#">UA</a></li>
+                                    <li><a class="dropdown-item" href="#">RU</a></li>
+                                    <li><a class="dropdown-item" href="#">ES</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="btn-wrapper mb-2 mb-lg-0 me-lg-3">
+                            <a href="#" class="btn btn-sign">Sign In</a>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href="#" class="btn btn-add">List your property</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <section class="sp-widget mb-4 pt-5 pb-4 sp-sticky">
+                    <div class="container">
+                        <nav aria-label="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+                            <ol class="breadcrumb sp-breadcrumb">
+                                <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                    <a href="{% url 'index' %}" itemprop="item">
+                                        <span itemprop="name">Home</span>
+                                    </a>
+                                    <meta itemprop="position" content="1" />
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                                    <span itemprop="name">Condos</span>
+                                    <meta itemprop="position" content="2" />
+                                </li>
+                            </ol>
+                        </nav>
+                        <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between mb-3">
+                            <h2 class="heading-2 mb-3 mb-lg-0">Bangkok properties for sale</h2>
+                            <a href="#adv-filter" data-bs-toggle="collapse" class="collapsed sp-green" aria-expanded="false"><i class="fa fa-sliders me-2"></i>Advance Filter</a>
+                        </div>
+                        <div id="adv-filter" class="collapse">
+                            <div class="sp-pills-wrapper mb-4">
+                                <ul class="nav nav-pills sp-pills" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <button class="nav-link active" id="pills-complete-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-complete" type="button" role="tab"
+                                            aria-controls="pills-complete" aria-selected="true">All</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-off-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-off" type="button" role="tab" aria-controls="pills-off"
+                                            aria-selected="false">Off Plan</button>
+                                    </li>
+                                    <li class="nav-item">
+                                        <button class="nav-link" id="pills-ready-tab" data-bs-toggle="pill"
+                                            data-bs-target="#pills-ready" type="button" role="tab" aria-controls="pills-ready"
+                                            aria-selected="false">Ready to Move</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="sp-widget__inner">
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <input type="text" class="form-control" placeholder="Location">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="simple-input">
+                                        <select id="ptype" class="form-control select2-hidden-accessible" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option value="" selected disabled>Property Types</option>
+                                            <option value="1">Apartment</option>
+                                            <option value="2">Condo</option>
+                                            <option value="3">Family</option>
+                                            <option value="4">Houses</option>
+                                            <option value="5">Villa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <input type="text" class="form-control" placeholder="Min Price">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <input type="text" class="form-control" placeholder="Max Price">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="simple-input">
+                                        <select id="bedrooms" class="form-control select2-hidden-accessible" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option value="" selected disabled>Bedrooms</option>
+                                            <option value="1">1+</option>
+                                            <option value="2">2+</option>
+                                            <option value="3">3+</option>
+                                            <option value="4">4+</option>
+                                            <option value="5">5+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="simple-input">
+                                        <select id="bathrooms" class="form-control select2-hidden-accessible" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option value="" selected disabled>Bathrooms</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <input type="text" class="form-control" placeholder="Min Area">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <div class="form-group">
+                                            <div class="">
+                                                <input type="text" class="form-control" placeholder="Max Area">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="simple-input">
+                                        <select id="built" class="form-control select2-hidden-accessible" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option value="" selected disabled>Year Built</option>
+                                            <option value="1">2010+</option>
+                                            <option value="2">2011+</option>
+                                            <option value="3">2012+</option>
+                                            <option value="4">2013+</option>
+                                            <option value="5">2014+</option>
+                                            <option value="6">2015+</option>
+                                            <option value="7">2016+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="simple-input">
+                                        <select id="sort" class="form-control select2-hidden-accessible" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option value="" selected>Sort: Recommended</option>
+                                            <option value="2">Sort: Price (low to high)</option>
+                                            <option value="3">Sort: Price (high to low)</option>
+                                            <option value="4">Sort: Best Value for Money</option>
+                                            <option value="5">Sort: Highest Guar. Rental Returns</option>
+                                            <option value="6">Sort: Completion Date</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="simple-input">
+                                        <select id="sort" class="form-control select2-hidden-accessible" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option value="" selected disabled>Type</option>
+                                            <option value="2">For Sale</option>
+                                            <option value="3">For Rent</option>
+                                            <option value="4">All</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <h6>Features</h6>
+                                        <ul class="list-unstyled row p-0 m-0 pt-2">
+                                            <li class="col-lg-4 col-md-6 p-0">
+                                                <input id="a-1" class="checkbox-custom" name="a-1" type="checkbox">
+                                                <label for="a-1" class="checkbox-custom-label">Feature 1</label>
+                                            </li>
+                                            <li class="col-lg-4 col-md-6 p-0">
+                                                <input id="a-2" class="checkbox-custom" name="a-2" type="checkbox">
+                                                <label for="a-2" class="checkbox-custom-label">Feature 2</label>
+                                            </li>
+                                            <li class="col-lg-4 col-md-6 p-0">
+                                                <input id="a-3" class="checkbox-custom" name="a-3" type="checkbox">
+                                                <label for="a-3" class="checkbox-custom-label">Feature 3</label>
+                                            </li>
+                                            <li class="col-lg-4 col-md-6 p-0">
+                                                <input id="a-4" class="checkbox-custom" name="a-4" type="checkbox">
+                                                <label for="a-4" class="checkbox-custom-label">Feature 4</label>
+                                            </li>
+                                            <li class="col-lg-4 col-md-6 p-0">
+                                                <input id="a-5" class="checkbox-custom" name="a-5" type="checkbox">
+                                                <label for="a-5" class="checkbox-custom-label">Feature 5</label>
+                                            </li>
+                                            <li class="col-lg-4 col-md-6 p-0">
+                                                <input id="a-6" class="checkbox-custom" name="a-6" type="checkbox">
+                                                <label for="a-6" class="checkbox-custom-label">Feature 6</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 d-flex align-items-end">
+                                        <button href="#adv-filter" class="btn sp-condos__btn collapsed" data-bs-toggle="collapse" aria-expanded="false">View Results</button>
+                                        <button class="btn sp-condos__btn sp-condos__btn-reset">Reset Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-4 pb-4">
+                    <div class="container-fluid">
+                        <div class="swiper swiper-property">
+                            <div class="swiper-wrapper">
+                                {% for project in condos_list %}
+                                    <a href="/project/{{ project.2 }}/" class="swiper-slide">
+                                        <h6>{{project.0}}</h6>
+                                        <p>{{project.1}} Properties</p>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sp-condos mb-4 pb-4">
+                    <div class="container">
+                        <div class="sp-condos__list">
+                            <div class="row">
+                                {% for property in page_obj %}
+                                    <div class="col-12 col-lg-6 mb-4">
+                                        <a href="/condo/{{ property.property_slug }}/" class="sp-condos__item vertical rounded">
+                                        <div class="swiper swiper-condos">
+                                            {% if property.len_photos > 1 %}
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="{{ property.list_photos_3.0 }}" alt="{{ property.property_name }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="{{ property.list_photos_3.1 }}" alt="{{ property.property_name }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="{{ property.list_photos_3.2 }}" alt="{{ property.property_name }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% else %}
+                                                <div class="swiper-wrapper">
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="/media/condos_photos/{{ property.photo_name }}/photos/photo_id_1.jpg" alt="{{ property.photo_name }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="/media/condos_photos/{{ property.photo_name }}/photos/photo_id_2.jpg" alt="{{ property.photo_name }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="swiper-slide">
+                                                        <div class="img-wrapper">
+                                                            <img src="/media/condos_photos/{{ property.photo_name }}/photos/photo_id_3.jpg" alt="{{ property.photo_name }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                            <div class="swiper-pagination"></div>
+                                        </div>
+                                        <div class="p-3">
+                                            <div
+                                            class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center border-bottom pb-2 mb-3">
+                                            <div class="sp-condos__info">
+                                                <h3 class="sp-condos__title">{{ property.property_name }}</h3>
+                                                <p class="sp-condos__address">{{ property.address }}, {{ property.location }}, {{ property.area }}</p>
+                                            </div>
+                                            <div class="sp-condos__stars">
+                                                <img src="/media/img/star-solid.svg" alt="">-?
+                                                <img src="/media/img/star-solid.svg" alt="">-?
+                                                <img src="/media/img/star-solid.svg" alt="">-?
+                                                <img src="/media/img/star-solid.svg" alt="">-?
+                                                <img src="/media/img/star-solid.svg" alt="">-?
+                                            </div>
+                                        </div>
+                                        <div class="sp-condos__text mb-3">
+                                            <p><b>{{ property.bedrooms }} Bedroom {{ property.property_type }} for sale at {{ property.property_name }}</b></p>
+                                            <p>{{ property.description }}</p>
+                                        </div>
+                                        <div class="sp-condos__data mb-3">
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bed"></i>
+                                                {{ property.bedrooms }}
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-bath"></i>
+                                                {{ property.bathrooms }}
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-building-o"></i>
+                                                {{ property.property_size }} SqM
+                                            </div>
+                                            <div class="sp-condos__data-item">
+                                                <i class="fa fa-solid fa-building"></i>
+                                                {{ property.property_type }}
+                                            </div>
+                                        </div>
+                                        <div class="sp-condos__tags mb-4 pb-2">
+                                            {% if property.furnishing != None %}
+                                                    <div class="sp-condos__tag red">{{ property.furnishing }}</div>
+                                                {% endif %}
+                                                {% if property.floor_number != None %}
+                                                    <div class="sp-condos__tag green">{{ property.floor_number }} floor</div>
+                                                {% endif %}
+                                                {% if property.unit_view != None %}
+                                                    <div class="sp-condos__tag green">{{ property.unit_view }}</div>
+                                                {% endif %}
+                                                {% for i in property.get_property_features %}
+                                                    <div class="sp-condos__tag blue">{{ i }}</div>
+                                                {% endfor %}
+                                        </div>
+                                        <div class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            <div class="sp-condos__price mb-2 mb-sm-0">
+                                                <p>AED {{ property.sales_price }}</p>
+                                                <p>(AED{{ property.price_per_sqm_sold }}/SqM)</p>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <p class="text-center mt-4">Showing 1 - 10 of {{ len_properties_list }} Results</p>
+                            <nav class="d-flex justify-content-center mt-4" aria-label="Page navigation">
+                                <ul class="sp-pagination d-flex align-items-center">
+
+                                        <!-- Попередній елемент -->
+                                        <li class="sp-pagination__item">
+                                            {% if page_obj.has_previous %}
+                                            <a class="sp-pagination__link arrow-prev" href="?page={{ page_obj.previous_page_number }}">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </a>
+                                            {% endif %}
+                                        </li>
+
+                                        <!-- Перша сторінка -->
+                                        {% if page_obj.number > 2 %}
+                                        <li class="sp-pagination__item">
+                                            <a class="sp-pagination__link {% if page_obj.number == 1 %}active{% endif %}" href="?page=1">1</a>
+                                        </li>
+                                        {% endif %}
+
+                                        <!-- Елементи пагінації -->
+                                        {% if page_obj.number > 3 %}
+                                            <li class="sp-pagination__item">
+                                                <a class="sp-pagination__link borderless" href="#">...</a>
+                                            </li>
+                                        {% endif %}
+
+                                        {% for num in page_obj.paginator.page_range %}
+                                            {% if num > page_obj.number|add:-2 and num < page_obj.number|add:2 %}
+                                                <li class="sp-pagination__item">
+                                                    <a class="sp-pagination__link {% if page_obj.number == num %}active{% endif %}" href="?page={{ num }}">{{ num }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        {% if page_obj.number < page_obj.paginator.num_pages|add:-2 %}
+                                            <li class="sp-pagination__item">
+                                                <a class="sp-pagination__link borderless" href="#">...</a>
+                                            </li>
+                                        {% endif %}
+
+                                        {% if page_obj.paginator.num_pages > page_obj.number|add:1  %}
+                                                <li class="sp-pagination__item">
+                                                    <a class="sp-pagination__link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+                                                </li>
+                                        {% endif %}
+
+                                        <!-- Наступний елемент -->
+                                        <li class="sp-pagination__item">
+                                            {% if page_obj.has_next %}
+                                            <a class="sp-pagination__link arrow-next" href="?page={{ page_obj.next_page_number }}">
+                                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </a>
+                                            {% endif %}
+                                        </li>
+
+
+                                    </ul>
+                            </nav>
+                    </div>
+                </section>
+
+                <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+                    <div class="container">
+                        <h3 class="heading-3 mb-3">Explore Properties in the Neighborhoods of Bangkok</h3>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="swiper swiper-property-with-img">
+                            <div class="swiper-wrapper">
+                                <a href="#" class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/bangkok.jpg" alt="">
+                                    </div>
+                                    <div class="text-wrapper p-2">
+                                        <h4 class="heading-4">Chatuchak</h4>
+                                        <p>187 Properties for you</p>
+                                        <p>Buy: 10 000 THB - 100 000 THB</p>
+                                        <p class="sp-green">See Chatuchak Highlights</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/bangkok.jpg" alt="">
+                                    </div>
+                                    <div class="text-wrapper p-2">
+                                        <h4 class="heading-4">Chatuchak</h4>
+                                        <p>187 Properties for you</p>
+                                        <p>Buy: 10 000 THB - 100 000 THB</p>
+                                        <p class="sp-green">See Chatuchak Highlights</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/bangkok.jpg" alt="">
+                                    </div>
+                                    <div class="text-wrapper p-2">
+                                        <h4 class="heading-4">Chatuchak</h4>
+                                        <p>187 Properties for you</p>
+                                        <p>Buy: 10 000 THB - 100 000 THB</p>
+                                        <p class="sp-green">See Chatuchak Highlights</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/bangkok.jpg" alt="">
+                                    </div>
+                                    <div class="text-wrapper p-2">
+                                        <h4 class="heading-4">Chatuchak</h4>
+                                        <p>187 Properties for you</p>
+                                        <p>Buy: 10 000 THB - 100 000 THB</p>
+                                        <p class="sp-green">See Chatuchak Highlights</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/bangkok.jpg" alt="">
+                                    </div>
+                                    <div class="text-wrapper p-2">
+                                        <h4 class="heading-4">Chatuchak</h4>
+                                        <p>187 Properties for you</p>
+                                        <p>Buy: 10 000 THB - 100 000 THB</p>
+                                        <p class="sp-green">See Chatuchak Highlights</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/bangkok.jpg" alt="">
+                                    </div>
+                                    <div class="text-wrapper p-2">
+                                        <h4 class="heading-4">Chatuchak</h4>
+                                        <p>187 Properties for you</p>
+                                        <p>Buy: 10 000 THB - 100 000 THB</p>
+                                        <p class="sp-green">See Chatuchak Highlights</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="swiper-slide">
+                                    <div class="img-wrapper">
+                                        <img src="/media/img/bangkok.jpg" alt="">
+                                    </div>
+                                    <div class="text-wrapper p-2">
+                                        <h4 class="heading-4">Chatuchak</h4>
+                                        <p>187 Properties for you</p>
+                                        <p>Buy: 10 000 THB - 100 000 THB</p>
+                                        <p class="sp-green">See Chatuchak Highlights</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+                    <div class="container">
+                        <h3 class="heading-3 mb-3">Top Rated Property Projects in Bangkok</h3>
+                        <div class="sp-tabs-wrapper mb-3">
+                            <ul class="nav nav-pills sp-tabs" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="pills-complete-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-complete" type="button" role="tab" aria-controls="pills-complete"
+                                        aria-selected="true">Tab 1</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="pills-off-tab" data-bs-toggle="pill"
+                                        data-bs-target="#pills-off" type="button" role="tab" aria-controls="pills-off"
+                                        aria-selected="false">Tab 2</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content mb-3" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-complete" role="tabpanel"
+                                aria-labelledby="pills-complete-tab">
+                                <a class="sp-condos__item rounded p-3 mb-3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12">
+                                            <div
+                                                class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                                <div class="sp-condos__info">
+                                                    <h3 class="sp-condos__title">Chambers Ramintra</h3>
+                                                    <p class="sp-condos__address">Ram Inthra, Khan Na Yao, Bangkok</p>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                                    <div class="d-flex flex-column me-sm-5">
+                                                        <div class="sp-condos__price mb-2 mb-sm-0">
+                                                            <p>35 000 THB</p>
+                                                        </div>
+                                                        <small>-20.2% underpriced</small>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-items-sm-center">
+                                                        <div class="sp-condos__stars">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                        </div>
+                                                        <small>12 reviews</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="sp-condos__item rounded p-3 mb-3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12">
+                                            <div
+                                                class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                                <div class="sp-condos__info">
+                                                    <h3 class="sp-condos__title">Chambers Ramintra</h3>
+                                                    <p class="sp-condos__address">Ram Inthra, Khan Na Yao, Bangkok</p>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                                    <div class="d-flex flex-column me-sm-5">
+                                                        <div class="sp-condos__price mb-2 mb-sm-0">
+                                                            <p>35 000 THB</p>
+                                                        </div>
+                                                        <small>-20.2% underpriced</small>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-items-sm-center">
+                                                        <div class="sp-condos__stars">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                        </div>
+                                                        <small>12 reviews</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="sp-condos__item rounded p-3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12">
+                                            <div
+                                                class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                                <div class="sp-condos__info">
+                                                    <h3 class="sp-condos__title">Chambers Ramintra</h3>
+                                                    <p class="sp-condos__address">Ram Inthra, Khan Na Yao, Bangkok</p>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                                    <div class="d-flex flex-column me-sm-5">
+                                                        <div class="sp-condos__price mb-2 mb-sm-0">
+                                                            <p>35 000 THB</p>
+                                                        </div>
+                                                        <small>-20.2% underpriced</small>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-items-sm-center">
+                                                        <div class="sp-condos__stars">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                        </div>
+                                                        <small>12 reviews</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="tab-pane fade" id="pills-off" role="tabpanel" aria-labelledby="pills-off-tab">
+                                <a class="sp-condos__item rounded p-3 mb-3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12">
+                                            <div
+                                                class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                                <div class="sp-condos__info">
+                                                    <h3 class="sp-condos__title">Chambers Ramintra</h3>
+                                                    <p class="sp-condos__address">Ram Inthra, Khan Na Yao, Bangkok</p>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                                    <div class="d-flex flex-column me-sm-5">
+                                                        <div class="sp-condos__price mb-2 mb-sm-0">
+                                                            <p>35 000 THB</p>
+                                                        </div>
+                                                        <small>-20.2% underpriced</small>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-items-sm-center">
+                                                        <div class="sp-condos__stars">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                        </div>
+                                                        <small>12 reviews</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="sp-condos__item rounded p-3 mb-3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12">
+                                            <div
+                                                class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                                <div class="sp-condos__info">
+                                                    <h3 class="sp-condos__title">Chambers Ramintra</h3>
+                                                    <p class="sp-condos__address">Ram Inthra, Khan Na Yao, Bangkok</p>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                                    <div class="d-flex flex-column me-sm-5">
+                                                        <div class="sp-condos__price mb-2 mb-sm-0">
+                                                            <p>35 000 THB</p>
+                                                        </div>
+                                                        <small>-20.2% underpriced</small>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-items-sm-center">
+                                                        <div class="sp-condos__stars">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                        </div>
+                                                        <small>12 reviews</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="sp-condos__item rounded p-3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-12">
+                                            <div
+                                                class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
+                                                <div class="sp-condos__info">
+                                                    <h3 class="sp-condos__title">Chambers Ramintra</h3>
+                                                    <p class="sp-condos__address">Ram Inthra, Khan Na Yao, Bangkok</p>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center">
+                                                    <div class="d-flex flex-column me-sm-5">
+                                                        <div class="sp-condos__price mb-2 mb-sm-0">
+                                                            <p>35 000 THB</p>
+                                                        </div>
+                                                        <small>-20.2% underpriced</small>
+                                                    </div>
+                                                    <div class="d-flex flex-column align-items-sm-center">
+                                                        <div class="sp-condos__stars">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                            <img src="/media/img/star-solid.svg" alt="">
+                                                        </div>
+                                                        <small>12 reviews</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="d-flex flex-column flex-sm-row align-items-start justify-content-between">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <p>Only showing 5 of 3182 property projects in Bangkok.</p>
+                        <p>The project rating data is based on reviews from verified residents and visitors of those projects.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="mb-4 mb-lg-5 pb-4 pb-lg-5">
+                    <div class="container">
+                        <h3 class="heading-3 mb-3">Bangkok Real Estate Trends</h3>
+                        <p class="mb-3">Discover the current state of Bangkok's real estate market by exploring the prevailing trends and the average prices in the area.</p>
+                        <h3 class="heading-3 mb-3">How affordable are properties in Bangkok?</h3>
+                        <div class="table-responsive sp-table-wrapper p-0 mb-4">
+                            <table class="table table-striped sp-table">
+                                <tbody>
+                                    <tr>
+                                        <td>The median sales price for a property in Bangkok</td>
+                                        <td>35 000 THB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The median price per square meter for a property in Bangkok</a></td>
+                                        <td>35 000 THB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>The Bangkok properties for sale</td>
+                                        <td>956</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h3 class="heading-3 mb-3">What is the average price of a Property in Bangkok?</h3>
+                        <div class="table-responsive sp-table-wrapper p-0">
+                            <table class="table table-striped sp-table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Property Size</th>
+                                        <th class="text-center" scope="col">Avg. Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Studio <a href="#">(View 955 Properties)</a></td>
+                                        <td class="text-center">35 000 THB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1 Bedroom <a href="#">(View 955 Properties)</a></td>
+                                        <td class="text-center">35 000 THB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 Bedrooms <a href="#">(View 955 Properties)</a></td>
+                                        <td class="text-center">35 000 THB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 Bedrooms <a href="#">(View 955 Properties)</a></td>
+                                        <td class="text-center">35 000 THB</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4 Bedrooms <a href="#">(View 955 Properties)</a></td>
+                                        <td class="text-center">35 000 THB</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="sp-custom mb-4 mb-lg-5 pb-4 pb-lg-5 d-none">
+                    <div class="container">
+                        <div class="sp-custom__inner">
+                            <div
+                                class="sp-custom__header d-flex flex-column flex-sm-row align-items-sm-center justify-content-between mt-4 mb-3">
+                                <h1 class="heading-1 mb-2 mb-sm-0">What you need to know before buying a property in Bangkok
+                                </h1>
+                            </div>
+                            <div class="sp-custom__info">
+                                <div class="sp-custom__info-img">
+                                    <img src="/media/img/bangkok.jpg" alt="">
+                                </div>
+                                <p>If you're thinking of buying a property in Bangkok, there are a few things you should know
+                                    first. The process of buying property in Thailand is different from other countries, so it's
+                                    important to have a good understanding of what you're doing before you start. The first
+                                    thing to do is find a good real estate agent. There are many agents in Bangkok who can help
+                                    you find the right property for sale, but it's important to choose one that you trust and
+                                    that has a good reputation. Once you've found an agent, they will help you with the
+                                    paperwork and legalities involved in purchasing property in Bangkok. They will also be able
+                                    to give you advice on the best areas to buy property in Bangkok, depending on your budget
+                                    and needs. Another thing to consider before buying property in Bangkok is the location.
+                                    Bangkok is a big city, and it's important to choose an area that you feel comfortable with.
+                                    There are many different areas to choose from, so it's worth doing some research to find out
+                                    which one would suit you best. Property prices in Bangkok can vary greatly depending on the
+                                    area, so it's important to get an idea of what you can afford before you start looking.
+                                    Lastly, don't forget to factor in the costs of maintenance and repairs when considering
+                                    buying property in Bangkok. Property in Bangkok can be a great investment, but it's
+                                    important to make sure that you're prepared for the long-term costs involved. With a little
+                                    research and planning, buying property in Bangkok can be a rewarding experience.</p>
+                                <p>If you're thinking of buying a property in Bangkok, there are a few things you should know
+                                    first. The process of buying property in Thailand is different from other countries, so it's
+                                    important to have a good understanding of what you're doing before you start. The first
+                                    thing to do is find a good real estate agent. There are many agents in Bangkok who can help
+                                    you find the right property for sale, but it's important to choose one that you trust and
+                                    that has a good reputation. Once you've found an agent, they will help you with the
+                                    paperwork and legalities involved in purchasing property in Bangkok. They will also be able
+                                    to give you advice on the best areas to buy property in Bangkok, depending on your budget
+                                    and needs. Another thing to consider before buying property in Bangkok is the location.
+                                    Bangkok is a big city, and it's important to choose an area that you feel comfortable with.
+                                    There are many different areas to choose from, so it's worth doing some research to find out
+                                    which one would suit you best. Property prices in Bangkok can vary greatly depending on the
+                                    area, so it's important to get an idea of what you can afford before you start looking.
+                                    Lastly, don't forget to factor in the costs of maintenance and repairs when considering
+                                    buying property in Bangkok. Property in Bangkok can be a great investment, but it's
+                                    important to make sure that you're prepared for the long-term costs involved. With a little
+                                    research and planning, buying property in Bangkok can be a rewarding experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="sp-map-right col-12 col-lg-6 d-none d-lg-block">
+                <section class="sp-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248057.20399581234!2d100.46795776566758!3d13.72487823912011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d6032280d61f3%3A0x10100b25de24820!2z0JHQsNC90LPQutC-0LosINCi0LDQuNC70LDQvdC0!5e0!3m2!1sru!2sua!4v1684681000985!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="sp-footer py-3 mt-4">
+        <div class="container">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Thailand
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+                        <li><a class="dropdown-item" href="#">Nepal</a></li>
+                        <li><a class="dropdown-item" href="#">India</a></li>
+                        <li><a class="dropdown-item" href="#">China</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Buy</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Rent</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sell</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Projects</a></li>
+            </ul>
+            <div class="d-flex flex-column flex-sm-row justify-content-between">
+                <ul class="nav justify-content-center justify-content-sm-start">
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Privacy</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Contact</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Press</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Careers</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Sitemap</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link pe-2">Virtual Real Estate</a></li>
+                </ul>
+                <p class="text-center">© 2023 <a href="#">bangkok-condos-for-sale.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'property/js/script.js' %}"></script>
+</body>
+
+</html>
