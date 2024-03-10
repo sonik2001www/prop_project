@@ -130,7 +130,7 @@ Explanation of each variable:
 - `SECRET_KEY`: This variable represents a secret key used for cryptographic signing in Django. It is crucial for the security of your application as it is used to generate hashes for various security elements like cookies and CSRF tokens. It should be kept confidential and never shared publicly.
 - `EMAIL_HOST_USER`: This variable represents the email address used for sending emails from your Django application. It typically corresponds to the email account associated with your email service provider, such as Gmail, Outlook, or your custom SMTP server.
 - `EMAIL_HOST_PASSWORD`: This variable represents the password associated with the email address specified in `EMAIL_HOST_USER`. It is used for authentication when sending emails from your Django application.
-- `API_KEY`: This variable represents the API key required for accessing the YouTube Data API. You can get the key here: [get YouTube API Key](https://developers.google.com/youtube/v3)
+- `API_KEY`: This variable represents the API key required to access the Google Maps API service. Google Maps API. You can get the key here: [get Google Maps API Key](https://developers.google.com/maps/apis-by-platform?hl=ru)
 
 ### 6. Migrations
 
