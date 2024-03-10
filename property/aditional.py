@@ -2,6 +2,8 @@ from math import radians, sin, cos, sqrt, atan2, floor
 
 import requests
 
+from config import API_KEY
+
 
 def calculate_distance(lat1, lon1, lat2, lon2):
     # Функція для обчислення відстані між двома точками на земній поверхні
@@ -73,7 +75,7 @@ def get_coordinates(place):
     base_url = 'https://maps.googleapis.com/maps/api/geocode/json'
     params = {
         'address': f'{place}, Bangkok',
-        'key': 'AIzaSyBuNKhbP609Fb3jQassP8wqp9xdebMIT7w'
+        'key': API_KEY
     }
     response = requests.get(base_url, params=params)
     data = response.json()
